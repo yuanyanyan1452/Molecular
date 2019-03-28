@@ -9,7 +9,119 @@
     <bookmark url="file://$PROJECT_DIR$/web/resources/css/Login.css" line="38" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10e3f6a5-75d1-4d92-8dc0-4e0ae16f91f9" name="Default" comment="" />
+    <list default="true" id="10e3f6a5-75d1-4d92-8dc0-4e0ae16f91f9" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Tickets_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Tickets_war_exploded.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/META-INF/applicationContext.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/META-INF/log4j.properties" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/META-INF/spring-mvc.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/molecular/controller/MolecularController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/molecular/dao/BaseDao.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/molecular/dao/UserDao.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/molecular/dao/impl/BaseDaoImpl.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/molecular/dao/impl/UserDaoImpl.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/molecular/entity/Login.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/molecular/entity/User.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/molecular/service/UserService.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/molecular/service/impl/UserServiceImpl.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/controller/ManagerController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/controller/UserController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/controller/VenueController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/dao/BaseDao.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/dao/OrderDao.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/dao/PlanDao.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/dao/UserDao.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/dao/VenueDao.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/dao/impl/BaseDaoImpl.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/dao/impl/OrderDaoImpl.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/dao/impl/PlanDaoImpl.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/dao/impl/UserDaoImpl.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/dao/impl/VenueDaoImpl.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/entity/Apply.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/entity/CancelUser.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/entity/Login.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/entity/Order.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/entity/Plan.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/entity/User.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/entity/Venue.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/entity/VenueModify.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/service/OrderService.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/service/PlanService.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/service/UserService.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/service/VenueService.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/service/impl/OrderServiceImpl.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/service/impl/PlanServiceImpl.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/service/impl/UserServiceImpl.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/com/tickets/service/impl/VenueServiceImpl.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/classes/config.properties" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/antlr-2.7.7.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/aopalliance-1.0.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/c3p0-0.9.1.2.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/commons-fileupload-1.3.1.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/commons-io-2.2.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/commons-logging-1.2.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/dom4j-1.6.1.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/ehcache-core-2.4.3.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/hibernate-commons-annotations-4.0.4.Final.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/hibernate-core-4.3.5.Final.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/hibernate-ehcache-4.3.5.Final.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/hibernate-jpa-2.1-api-1.0.0.Final.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/jackson-annotations-2.5.0.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/jackson-core-2.5.0.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/jackson-core-asl-1.9.13.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/jackson-databind-2.5.0.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/jackson-mapper-asl-1.9.13.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/jandex-1.1.0.Final.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/javassist-3.18.1-GA.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/jboss-logging-3.1.3.GA.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/jboss-logging-annotations-1.2.0.Beta1.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/jboss-transaction-api_1.2_spec-1.0.0.Final.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/jstl-1.2.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/log4j-1.2.17.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/mysql-connector-java-5.1.38.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/slf4j-api-1.6.1.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-aop-4.3.1.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-aop-4.3.14.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-aspects-4.3.14.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-beans-4.3.1.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-beans-4.3.14.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-context-4.3.1.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-context-4.3.14.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-context-support-4.3.14.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-core-4.3.1.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-core-4.3.14.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-expression-4.3.1.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-expression-4.3.14.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-instrument-4.3.14.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-instrument-tomcat-4.3.14.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-jdbc-4.3.1.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-jdbc-4.3.14.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-jms-4.3.14.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-messaging-4.3.14.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-orm-4.3.1.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-orm-4.3.14.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-oxm-4.3.14.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-test-4.3.14.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-tx-4.3.1.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-tx-4.3.14.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-web-4.3.1.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/spring-webmvc-4.3.1.RELEASE.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/standard-1.1.2.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/lib/xml-apis-1.0.b2.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/WEB-INF/web.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/index.jsp" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/resources/css/Login.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/resources/css/MolecularSearch.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/resources/img/title.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/resources/img/web-icon.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/resources/jquery/jquery/jquery-3.2.1.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/resources/jquery/jquery/jquery-3.2.1.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/views/Login.jsp" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/views/MolecularSearch.jsp" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Tickets_war_exploded/views/MolecularShow.jsp" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/web/views/MolecularSearch.jsp" afterPath="$PROJECT_DIR$/web/views/MolecularSearch.jsp" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,11 +161,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Login.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Login.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/views/Login.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="60" column="44" lean-forward="false" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="44" />
+            <state relative-caret-position="522">
+              <caret line="65" column="15" lean-forward="true" selection-start-line="65" selection-start-column="15" selection-end-line="65" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -105,17 +217,17 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/molecular/service/impl/UserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="447">
-              <caret line="118" column="0" lean-forward="true" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+              <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MolecularSearch.jsp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MolecularSearch.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/views/MolecularSearch.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="49" column="79" lean-forward="false" selection-start-line="49" selection-start-column="79" selection-end-line="49" selection-end-column="79" />
+            <state relative-caret-position="210">
+              <caret line="50" column="21" lean-forward="true" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -168,6 +280,9 @@
       <find>index</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
       <projects_view />
@@ -217,7 +332,6 @@
         <option value="$PROJECT_DIR$/web/views/Login.jsp" />
         <option value="$PROJECT_DIR$/web/views/PersonalInfo.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/molecular/controller/MolecularController.java" />
-        <option value="$PROJECT_DIR$/web/views/MolecularSearch.jsp" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/web/resources/js/Manager.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/molecular/entity/Login.java" />
@@ -227,6 +341,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/molecular/dao/UserDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/molecular/dao/impl/UserDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/molecular/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/web/views/MolecularSearch.jsp" />
       </list>
     </option>
   </component>
@@ -286,6 +401,7 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -309,6 +425,24 @@
             <path>
               <item name="Molecular" type="b2602c69:ProjectViewProjectNode" />
               <item name="Molecular" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Molecular" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Molecular" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Molecular" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Molecular" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Molecular" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Molecular" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="Molecular_war_exploded" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Molecular" type="b2602c69:ProjectViewProjectNode" />
@@ -473,7 +607,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="Downloaded.Files.Path.Enabled" value="true" />
@@ -630,7 +764,6 @@
       <listeners />
     </configuration>
     <configuration name="molecular" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.5" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="Tickets:war exploded">
           <settings>
@@ -763,7 +896,7 @@
       <workItem from="1552884760144" duration="599000" />
       <workItem from="1553231023023" duration="700000" />
       <workItem from="1553324482069" duration="180000" />
-      <workItem from="1553324681513" duration="17168000" />
+      <workItem from="1553324681513" duration="18187000" />
     </task>
     <servers />
   </component>
@@ -773,7 +906,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="352201000" />
+    <option name="totallyTimeSpent" value="353220000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -785,10 +918,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14139111" sideWeight="0.50214595" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5032189" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32839224" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -805,10 +939,10 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2177879" sideWeight="0.49785408" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.4967811" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22103004" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22103004" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12314709" sideWeight="0.49785408" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1113,14 +1247,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/MolecularSearch.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="49" column="79" lean-forward="false" selection-start-line="49" selection-start-column="79" selection-end-line="49" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/molecular/controller/MolecularController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="424">
@@ -1210,7 +1336,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/molecular/service/impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="447">
-          <caret line="118" column="0" lean-forward="true" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+          <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1252,8 +1378,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/views/Login.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="60" column="44" lean-forward="false" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="44" />
+        <state relative-caret-position="522">
+          <caret line="65" column="15" lean-forward="true" selection-start-line="65" selection-start-column="15" selection-end-line="65" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/views/MolecularSearch.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="50" column="21" lean-forward="true" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -1277,7 +1411,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Web (Tickets)|Web</last-edited>
+          <last-edited>Spring</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1313,12 +1447,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Tickets</last-edited>
+          <last-edited>Molecular</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

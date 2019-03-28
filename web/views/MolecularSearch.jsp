@@ -47,7 +47,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" +r
                     data:{"molecularName":$("#searchInput").val()},
                     success:function (data) {
                         if(data == "success")
-                            window.location.href = '<%basePath%>' + "molecular/";
+                            <%--window.location.href = '<%basePath%>' + "molecular/";--%>
                     }
                 })
             }
