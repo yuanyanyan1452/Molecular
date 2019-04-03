@@ -1,14 +1,16 @@
 package organicsService;
 import java.util.Scanner;
 
-public class InputMoleFormulaService {
+public class InputMoleFormula {
 	/*
 	 * 获取输入的分子式字符串
 	 * return:string
 	 */
 	public static String getMoleFormula() {
 		Scanner sc=new Scanner(System.in);
-		return sc.next();
+		String str=sc.next();
+		sc.close();
+		return str;
 	}
 	/*
 	 * 获得分子式中碳原子数量和氢原子数量
