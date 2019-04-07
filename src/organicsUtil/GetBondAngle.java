@@ -18,6 +18,11 @@ public class GetBondAngle {
 		case("CCDoubleBond"):return 120;
 		case("CCTripleBond"):return 180;
 		case("CCDoubleBen"):return 120;
+		case("CFTeBond"):return 109.5;
+		case("CClTeBond"):return 109.5;
+		case("CBrTeBond"):return 109.5;
+		case("CITeBond"):return 109.5;
+		
 		default:return 0;
 		}
 	}
