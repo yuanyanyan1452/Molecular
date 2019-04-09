@@ -1,9 +1,6 @@
 package organicsUtil;
 
 public enum BondType {
-	CHTeBond,//C和H单键，键角为109度28分，空间构型为正四面体
-	CH120Bond,//C和H单键，键角为120度，平面型
-	CH180Bond,//C和H单键，键角为180度，直线型
 	
 	CCSingleBond,//C和C单键,键角不定可以随意旋转
 	CC180SingleBond,//C和C单键，键角为180度，直线型
@@ -14,6 +11,10 @@ public enum BondType {
 	CCTripleBond,//C和C三键
 	CCDoubleBen,//C和C在苯环上特殊的双键,
 	
+	CHTeBond,//C和H单键，键角为109度28分，空间构型为正四面体
+	CH120Bond,//C和H单键，键角为120度，平面型
+	CH180Bond,//C和H单键，键角为180度，直线型
+	
 	CFTeBond,//C和F单键，键角为109度28分，空间构型为正四面体
 	CClTeBond,
 	CBrTeBond,
@@ -22,4 +23,8 @@ public enum BondType {
 	CCl120Bond,
 	CBr120Bond,
 	CI120Bond,
+	CF180Bond,//C和F单键，键角为180分，空间构型为直线型
+	CCl180Bond,
+	CBr180Bond,
+	CI180Bond,
 }

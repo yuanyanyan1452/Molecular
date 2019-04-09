@@ -153,9 +153,76 @@ public class HalohydrocarbonService {
 					}
 				}
 			}else if(cNumber*2-2==(hNumber+xNumber)) {//卤代炔烃
-				
+				//先将碳碳键分配掉
+				for(int i=1;i<=cNumber-1;i++) {
+					if(i==1) {
+						bonds.add("C"+i+"C"+(i+1)+BondType.CCTripleBond);
+					}else if(i==2){
+						bonds.add("C"+i+"C"+(i+1)+BondType.CC180SingleBond);
+					}else {
+						bonds.add("C"+i+(i+1)+"C"+BondType.CCTeSingleBond);
+					}
+				}
+				HashMap<Integer,Integer> map=new HashMap<Integer,Integer>();
+				//分配碳原子上面剩下的键
+				for(int i=1;i<=cNumber;i++) {
+					if(i==1) {
+						map.put(i, 1);
+					}else if(i==2) {
+						if(i==cNumber) {
+							map.put(i, 1);
+						}else {
+							map.put(i, 0);
+						}
+					}else if(i>2&&i<cNumber) {
+						map.put(i, 2);
+					}else {
+						map.put(i, 3);
+					}
+				}
+				//分配氢和卤原子
+				for(int i=1;i<=cNumber;i++) {
+					while(xNumber>0&&map.get(i)>0) {
+						if(i==1) {
+							switch(haloType) {
+								case F:bonds.add("C"+i+haloType+BondType.CF180Bond);break;
+								case Cl:bonds.add("C"+i+haloType+BondType.CCl180Bond);break;
+								case Br:bonds.add("C"+i+haloType+BondType.CBr180Bond);break;
+								case I:bonds.add("C"+i+haloType+BondType.CI180Bond);break;
+								default:
+							}
+						}else {
+							bonds.add("C"+i+haloType+bondType);
+						}
+						xNumber--;map.put(i, map.get(i)-1);
+					}
+				}
+				for(int i=1;i<=cNumber;i++) {
+					while(hNumber>0&&map.get(i)>0) {
+						if(i==1)bonds.add("C"+i+"H"+BondType.CH180Bond);
+						else {
+							bonds.add("C"+i+"H"+BondType.CHTeBond);
+						}
+						hNumber--;map.put(i, map.get(i)-1);
+					}
+				}
 			}else if(cNumber*2-6==(hNumber+xNumber)) {//卤代芳香烃
-				
+				String[] temp=GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.BenzeneRing);
+				for(String str:temp)bonds.add(str);
+				for(int i=1;i<=6;i++) {
+					if(xNumber>0) {
+						switch(haloType) {
+							case F:bonds.add("C"+i+haloType+BondType.CF120Bond);break;
+							case Cl:bonds.add("C"+i+haloType+BondType.CCl120Bond);break;
+							case Br:bonds.add("C"+i+haloType+BondType.CBr120Bond);break;
+							case I:bonds.add("C"+i+haloType+BondType.CI120Bond);break;
+							default:break;
+						}
+						xNumber--;
+					}else {
+						bonds.add("C"+i+"H"+BondType.CH120Bond);
+					}
+				}
 			}
 		String[] res=new String[bonds.size()];
 		return bonds.toArray(res);
