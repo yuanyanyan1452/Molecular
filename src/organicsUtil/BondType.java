@@ -27,4 +27,10 @@ public enum BondType {
 	CCl180Bond,
 	CBr180Bond,
 	CI180Bond,
+	//羟基，结构为直角型
+	OHBond,
+	//醛基，结构为正三角型
+	CODouble120Bond,
+	//羧基
+	COSingleBond,
 }

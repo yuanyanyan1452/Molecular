@@ -6,8 +6,8 @@ import organicsUtil.BondType;;
  * 只含碳氢的化合物，或者简称为烃
  * 分为烷烃烯烃炔烃芳香烃
  */
-public class HydrocarbonService {
-	public static String[] transformMoleFormula(String moleFormula) {
+public class HydrocarbonService implements TransformService{
+	public  String[] transformMoleFormula(String moleFormula) {
 		//对于CH4
 		if(moleFormula.matches("[Cc][Hh](4)")) {
 			String[] bonds=new String[4];

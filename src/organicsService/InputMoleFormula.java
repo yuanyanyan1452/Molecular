@@ -13,7 +13,8 @@ public class InputMoleFormula {
 		return str;
 	}
 	/*
-	 * 获得分子式中碳原子数量和氢原子数量和卤代烃中的X原子数量
+	 * 获得分子式中碳原子数量和氢原子数量和
+	 * 卤代烃中的X原子数量或者醇中的氧原子X数量
 	 * return：int[] result
 	 * result[0]:cNumber
 	 * result[1]:hNumber
@@ -32,6 +33,7 @@ public class InputMoleFormula {
 		int cNumber=1==location?1:Integer.parseInt(moleFormula.substring(1, location));
 		int hNumber=0;
 		int locationX=0;
+		int locationO=0;
 		for(int i=location;i<len;i++) {
 			char temp=moleFormula.charAt(i);
 			if(temp=='F'||temp=='f'||temp=='I'||temp=='i') {
@@ -52,6 +54,10 @@ public class InputMoleFormula {
 					hNumber=(location+1)==(locationX-1)?1:Integer.parseInt(moleFormula.substring(location+1,locationX-1));
 					break;
 				}
+			}else if(temp=='O'||temp=='o') {
+				locationX=i;
+				hNumber=(location+1)==(locationX)?1:Integer.parseInt(moleFormula.substring(location+1,locationX));
+				break;
 			}
 		}
 		

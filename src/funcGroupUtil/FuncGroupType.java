@@ -7,5 +7,9 @@ package funcGroupUtil;
 public enum FuncGroupType {
 	Methyl,//甲基
 	BenzeneRing,//苯环（不是官能团）但可以重用
+	OH,//羟基-醇
+	CHO,//醛基-醛
+	COOH,//羧基-酸
+	
 	
 }
