@@ -33,4 +33,5 @@ public enum BondType {
 	CODouble120Bond,
 	//羧基
 	COSingleBond,
+	CO120SingleBond,
 }

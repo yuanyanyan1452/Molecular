@@ -33,7 +33,6 @@ public class InputMoleFormula {
 		int cNumber=1==location?1:Integer.parseInt(moleFormula.substring(1, location));
 		int hNumber=0;
 		int locationX=0;
-		int locationO=0;
 		for(int i=location;i<len;i++) {
 			char temp=moleFormula.charAt(i);
 			if(temp=='F'||temp=='f'||temp=='I'||temp=='i') {
