@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 import organicsUtil.HaloType;
 
 import java.util.regex.Matcher;
-
+import java.util.LinkedList;
 public class ServiceController {
  /*
  * 根据分子式判断调用哪一个具体的service
@@ -14,8 +14,8 @@ public class ServiceController {
  * HalohydrocarbonService：卤代烃
  */
 	static HaloType haloType;
-	public static String[]  serviceDispatcher(String moleFormula) {
-		String[] bonds=null;
+	public static LinkedList<String>  serviceDispatcher(String moleFormula) {
+		LinkedList<String> bonds=new LinkedList<String>();
 		if(moleFormula.matches("[Cc]([1-9]{1}[0-9]{0,})?[Hh]([1-9]{1}[0-9]{0,})?")) {
 			HydrocarbonService hydrocarbonService=new HydrocarbonService();
 			bonds=hydrocarbonService.transformMoleFormula(moleFormula);

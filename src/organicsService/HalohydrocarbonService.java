@@ -1,42 +1,40 @@
 package organicsService;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Arrays;
 
 import funcGroupUtil.FuncGroupType;
 import funcGroupUtil.GetFuncGroupStrFormula;
 import organicsUtil.BondType;
 import organicsUtil.HaloType;
-
+import java.util.LinkedList;
 /*
  * 卤代烃
  * 烃中的氢原子被F、Cl、Br、I替代即氟氯溴碘代烃
  */
 public class HalohydrocarbonService {
-	public static String[] transformMoleFormula(String moleFormula,HaloType haloType) {
+	public static LinkedList<String> transformMoleFormula(String moleFormula,HaloType haloType) {
 		
-		int[] result=InputMoleFormula.getNumber(moleFormula);
-		int cNumber=result[0];
-		int hNumber=result[1];
-		int xNumber=result[2];
-		ArrayList<String> bonds=new ArrayList<String>();
-		BondType bondType=BondType.CFTeBond;
+		LinkedList<Integer> numbers=InputMoleFormula.getNumber(moleFormula);
+		int cNumber=numbers.get(0);
+		int hNumber=numbers.get(1);
+		int xNumber=numbers.get(2);
+		LinkedList<String> bonds=new LinkedList<String>();
+		BondType bondType=BondType.CFTeSingleBond;
 		switch(haloType) {
-		case F:bondType=BondType.CFTeBond;break;
-		case Cl:bondType=BondType.CClTeBond;break;
-		case Br:bondType=BondType.CBrTeBond;break;
-		case I:bondType=BondType.CITeBond;;break;
+		case F:bondType=BondType.CFTeSingleBond;break;
+		case Cl:bondType=BondType.CClTeSingleBond;break;
+		case Br:bondType=BondType.CBrTeSingleBond;break;
+		case I:bondType=BondType.CITeSingleBond;;break;
 		default:break;
 		}
 		//甲基卤
 		if(cNumber==1&&hNumber==3&&xNumber==1) {
-			bonds.addAll(Arrays.asList(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.Methyl)));
+			bonds.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.Methyl));
 			switch(haloType) {
-			case F:bonds.add("c1F1"+BondType.CFTeBond);break;
-			case Cl:bonds.add("c1Cl1"+BondType.CFTeBond);break;
-			case Br:bonds.add("c1Br1"+BondType.CBrTeBond);break;
-			case I:bonds.add("c1I1"+BondType.CITeBond);break;
+			case F:bonds.add("c1F1"+BondType.CFTeSingleBond);break;
+			case Cl:bonds.add("c1Cl1"+BondType.CFTeSingleBond);break;
+			case Br:bonds.add("c1Br1"+BondType.CBrTeSingleBond);break;
+			case I:bonds.add("c1I1"+BondType.CITeSingleBond);break;
 			default:break;
 			}
 		}else if(cNumber*2+2==(hNumber+xNumber)) {//卤代烷烃
@@ -45,7 +43,7 @@ public class HalohydrocarbonService {
 				//每个碳都是四个键
 				for(int i=0;i<cNumber;i++) {
 					if(i<=cNumber-2) {
-						bonds.add("C"+(i+1)+"C"+(i+2)+BondType.CCSingleBond);
+						bonds.add("C"+(i+1)+"C"+(i+2)+BondType.CCTeSingleBond);
 						map.put(i, map.get(i)-1);
 						map.put(i+1, map.get(i+1)-1);
 					}
@@ -56,15 +54,15 @@ public class HalohydrocarbonService {
 						map.put(0,map.get(0)-1);
 					}
 					while(map.get(0)!=1) {
-						bonds.add("C1H"+BondType.CHTeBond);
+						bonds.add("C1H"+BondType.CHTeSingleBond);
 						map.put(0,map.get(0)-1);
 					}
 					for(int i=1;i<=cNumber-2;i++) {
-						bonds.add("C"+(i+1)+"H"+BondType.CHTeBond);
-						bonds.add("C"+(i+1)+"H"+BondType.CHTeBond);
+						bonds.add("C"+(i+1)+"H"+BondType.CHTeSingleBond);
+						bonds.add("C"+(i+1)+"H"+BondType.CHTeSingleBond);
 					}
 					for(int i=0;i<3;i++)
-						bonds.add("C"+cNumber+"H"+BondType.CHTeBond);
+						bonds.add("C"+cNumber+"H"+BondType.CHTeSingleBond);
 				}else {
 					for(int i=0;i<3;i++) {
 						bonds.add("C1"+haloType+bondType);
@@ -83,7 +81,7 @@ public class HalohydrocarbonService {
 					}
 					for(int i=2;i<=cNumber-1;i++) {
 						if(map.get(i-1)>0) {
-							bonds.add("C"+i+"H"+BondType.CHTeBond);
+							bonds.add("C"+i+"H"+BondType.CHTeSingleBond);
 							map.put(i-1,map.get(i-1)-1);
 						}
 					}
@@ -93,12 +91,12 @@ public class HalohydrocarbonService {
 						map.put(cNumber-1,map.get(cNumber-1)-1);
 					}
 					while(map.get(cNumber-1)>0) {
-						bonds.add("C"+cNumber+"H"+BondType.CHTeBond);
+						bonds.add("C"+cNumber+"H"+BondType.CHTeSingleBond);
 						map.put(cNumber-1,map.get(cNumber-1)-1);
 					}
 				}
 			}else if(cNumber*2==(hNumber+xNumber)) {//卤代烯烃
-				bonds.add("C1C2"+BondType.CCDoubleBond);
+				bonds.add("C1C2"+BondType.CC120DoubleBond);
 				//碳之间的键
 				for(int i=2;i<=cNumber-1;i++) {
 					if(i==2) {
@@ -129,10 +127,10 @@ public class HalohydrocarbonService {
 					while(map.get(i)!=0&&xNumber!=0) {
 						if(i==1||i==2) {
 							switch(haloType) {
-								case F:bondType=BondType.CF120Bond;break;
-								case Cl:bondType=BondType.CCl120Bond;break;
-								case Br:bondType=BondType.CBr120Bond;break;
-								case I:bondType=BondType.CI120Bond;;break;
+								case F:bondType=BondType.CF120SingleBond;break;
+								case Cl:bondType=BondType.CCl120SingleBond;break;
+								case Br:bondType=BondType.CBr120SingleBond;break;
+								case I:bondType=BondType.CI120SingleBond;;break;
 								default:break;
 							}
 						}
@@ -146,8 +144,8 @@ public class HalohydrocarbonService {
 				for(int i=1;i<=cNumber;i++) {
 					while(map.get(i)!=0&&hNumber!=0) {
 						if(i==1||i==2) {
-							bonds.add("C"+i+"H"+BondType.CH120Bond);
-						}else bonds.add("C"+i+"H"+BondType.CHTeBond);
+							bonds.add("C"+i+"H"+BondType.CH120SingleBond);
+						}else bonds.add("C"+i+"H"+BondType.CHTeSingleBond);
 						map.put(i, map.get(i)-1);
 						hNumber--;
 					}
@@ -156,7 +154,7 @@ public class HalohydrocarbonService {
 				//先将碳碳键分配掉
 				for(int i=1;i<=cNumber-1;i++) {
 					if(i==1) {
-						bonds.add("C"+i+"C"+(i+1)+BondType.CCTripleBond);
+						bonds.add("C"+i+"C"+(i+1)+BondType.CC180TripleBond);
 					}else if(i==2){
 						bonds.add("C"+i+"C"+(i+1)+BondType.CC180SingleBond);
 					}else {
@@ -185,10 +183,10 @@ public class HalohydrocarbonService {
 					while(xNumber>0&&map.get(i)>0) {
 						if(i==1) {
 							switch(haloType) {
-								case F:bonds.add("C"+i+haloType+BondType.CF180Bond);break;
-								case Cl:bonds.add("C"+i+haloType+BondType.CCl180Bond);break;
-								case Br:bonds.add("C"+i+haloType+BondType.CBr180Bond);break;
-								case I:bonds.add("C"+i+haloType+BondType.CI180Bond);break;
+								case F:bonds.add("C"+i+haloType+BondType.CF180SingleBond);break;
+								case Cl:bonds.add("C"+i+haloType+BondType.CCl180SingleBond);break;
+								case Br:bonds.add("C"+i+haloType+BondType.CBr180SingleBond);break;
+								case I:bonds.add("C"+i+haloType+BondType.CI180SingleBond);break;
 								default:
 							}
 						}else {
@@ -199,33 +197,31 @@ public class HalohydrocarbonService {
 				}
 				for(int i=1;i<=cNumber;i++) {
 					while(hNumber>0&&map.get(i)>0) {
-						if(i==1)bonds.add("C"+i+"H"+BondType.CH180Bond);
+						if(i==1)bonds.add("C"+i+"H"+BondType.CH180SingleBond);
 						else {
-							bonds.add("C"+i+"H"+BondType.CHTeBond);
+							bonds.add("C"+i+"H"+BondType.CHTeSingleBond);
 						}
 						hNumber--;map.put(i, map.get(i)-1);
 					}
 				}
 			}else if(cNumber*2-6==(hNumber+xNumber)) {//卤代芳香烃
-				String[] temp=GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.BenzeneRing);
-				for(String str:temp)bonds.add(str);
+				bonds.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.BenzeneRing));
 				for(int i=1;i<=6;i++) {
 					if(xNumber>0) {
 						switch(haloType) {
-							case F:bonds.add("C"+i+haloType+BondType.CF120Bond);break;
-							case Cl:bonds.add("C"+i+haloType+BondType.CCl120Bond);break;
-							case Br:bonds.add("C"+i+haloType+BondType.CBr120Bond);break;
-							case I:bonds.add("C"+i+haloType+BondType.CI120Bond);break;
+							case F:bonds.add("C"+i+haloType+BondType.CF120SingleBond);break;
+							case Cl:bonds.add("C"+i+haloType+BondType.CCl120SingleBond);break;
+							case Br:bonds.add("C"+i+haloType+BondType.CBr120SingleBond);break;
+							case I:bonds.add("C"+i+haloType+BondType.CI120SingleBond);break;
 							default:break;
 						}
 						xNumber--;
 					}else {
-						bonds.add("C"+i+"H"+BondType.CH120Bond);
+						bonds.add("C"+i+"H"+BondType.CH120SingleBond);
 					}
 				}
 			}
-		String[] res=new String[bonds.size()];
-		return bonds.toArray(res);
+		return bonds;
 	}
 
 }
