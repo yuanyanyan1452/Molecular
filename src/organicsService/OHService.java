@@ -43,7 +43,7 @@ public class OHService implements TransformService {
 				}
 			}
 			return list;
-		}else if(cNumber*2==hNumber&&oNumber==1) {//不饱和度为1的醇
+		}else if(cNumber*2==hNumber&&oNumber==1&&cNumber>=2) {//不饱和度为1的醇
 			for(int i=1;i<=cNumber-1;i++) {
 				if(i==1)list.add("C1C2"+BondType.CC120DoubleBond);
 				else if(i==2)list.add("C2C3"+BondType.CC120SingleBond);
@@ -60,7 +60,13 @@ public class OHService implements TransformService {
 			list.addAll(dispatcherHO(map,cNumber,hNumber));
 			return list;
 		}else if((cNumber*2-6)==hNumber&&oNumber==1) {//芳香醇
-			
+			list.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.BenzeneRing));
+			list.add("c1o1CO120SingleBond");
+			list.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.OH));
+			for(int i=2;i<=6;i++) {
+				list.add("c"+i+"h"+BondType.CH120SingleBond);
+			}
+			return list;
 		}
 		return null;
 	}
@@ -85,4 +91,5 @@ public class OHService implements TransformService {
 		list.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.OH));
 		return list;
 	}
+	
 }

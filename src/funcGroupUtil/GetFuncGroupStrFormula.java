@@ -23,8 +23,8 @@ public class GetFuncGroupStrFormula {
 		}
 		//苯环的结构式，六个碳原子上面都还剩一个可以安装其他原子的单键
 		if(funcGroup.equals(FuncGroupType.BenzeneRing)) {
-			for(int i=1+sequenceC;i<=6+sequenceC;i++) {
-				if(i==6+sequenceC) {
+			for(int i=sequenceC;i<=5+sequenceC;i++) {
+				if(i==5+sequenceC) {
 					list.add("c"+i+"c1"+BondType.CC120SingleBond);
 					continue;
 				}

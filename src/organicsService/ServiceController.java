@@ -16,6 +16,7 @@ public class ServiceController {
 	static HaloType haloType;
 	public static LinkedList<String>  serviceDispatcher(String moleFormula) {
 		LinkedList<String> bonds=new LinkedList<String>();
+		LinkedList<String> temp=new LinkedList<String>();
 		if(moleFormula.matches("[Cc]([1-9]{1}[0-9]{0,})?[Hh]([1-9]{1}[0-9]{0,})?")) {
 			HydrocarbonService hydrocarbonService=new HydrocarbonService();
 			bonds=hydrocarbonService.transformMoleFormula(moleFormula);
@@ -23,7 +24,17 @@ public class ServiceController {
 			bonds=HalohydrocarbonService.transformMoleFormula(moleFormula,haloType);
 		}else if(moleFormula.matches("[Cc]([1-9]{1}[0-9]{0,})?[Hh]([1-9]{1}[0-9]{0,})?[Oo]")) {
 			OHService oHService=new OHService();
-			bonds=oHService.transformMoleFormula(moleFormula);
+			temp=oHService.transformMoleFormula(moleFormula);
+			if(temp!=null) {
+				bonds.add("醇：");
+				bonds.addAll(temp);
+			}
+			CHOService choService=new CHOService();
+			temp=choService.transformMoleFormula(moleFormula);
+			if(temp!=null) {
+				bonds.add("醛：");
+				bonds.addAll(temp);
+			}
 		}
 		return bonds;
 	}
