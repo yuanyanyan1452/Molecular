@@ -35,6 +35,12 @@ public class ServiceController {
 				bonds.add("醛：");
 				bonds.addAll(temp);
 			}
+			COService coService=new COService();
+			temp=coService.transformMoleFormula(moleFormula);
+			if(temp!=null) {
+				bonds.add("酮：");
+				bonds.addAll(temp);
+			}
 		}
 		return bonds;
 	}
