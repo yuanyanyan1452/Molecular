@@ -55,7 +55,7 @@ public class GetFuncGroupStrFormula {
 		//羧基
 		if(funcGroup.equals(FuncGroupType.COOH)) {
 			list.add("c"+(sequenceC)+"o"+(sequenceO)+BondType.CO120DoubleBond);
-			list.add("c"+(sequenceC)+"o"+(sequenceO)+BondType.COTeSingleBond);
+			list.add("c"+(sequenceC)+"o"+(++sequenceO)+BondType.COTeSingleBond);
 			list.add("o"+(sequenceO)+"h"+(sequenceH)+BondType.OH90Bond);
 			sequenceC++;
 			sequenceO++;

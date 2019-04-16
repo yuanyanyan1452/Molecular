@@ -22,7 +22,7 @@ public class ServiceController {
 			bonds=hydrocarbonService.transformMoleFormula(moleFormula);
 		}else if(matchHalohydrocarbon(moleFormula)) {
 			bonds=HalohydrocarbonService.transformMoleFormula(moleFormula,haloType);
-		}else if(moleFormula.matches("[Cc]([1-9]{1}[0-9]{0,})?[Hh]([1-9]{1}[0-9]{0,})?[Oo]")) {
+		}else if(moleFormula.matches("[Cc]([1-9]{1}[0-9]{0,})?[Hh]([1-9]{1}[0-9]{0,})?[Oo]([1-9]{1}[0-9]{0,})?")) {
 			OHService oHService=new OHService();
 			temp=oHService.transformMoleFormula(moleFormula);
 			if(temp!=null) {
@@ -39,6 +39,12 @@ public class ServiceController {
 			temp=coService.transformMoleFormula(moleFormula);
 			if(temp!=null) {
 				bonds.add("酮：");
+				bonds.addAll(temp);
+			}
+			COOHService coohService=new COOHService();
+			temp=coohService.transformMoleFormula(moleFormula);
+			if(temp!=null) {
+				bonds.add("酸：");
 				bonds.addAll(temp);
 			}
 		}
