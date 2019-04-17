@@ -38,4 +38,6 @@ public enum BondType {
 	//羧基
 	COTeSingleBond,
 	CO120SingleBond,
+	
+	CO180SingleBond,
 }
