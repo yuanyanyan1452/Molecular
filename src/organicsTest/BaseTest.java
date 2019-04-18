@@ -15,7 +15,7 @@ public class BaseTest {
 		}
 		//debug entrance
 		public static void main(String[] args) {
-			LinkedList<String> bonds=ServiceController.serviceDispatcher("c3h6o2");
+			LinkedList<String> bonds=ServiceController.serviceDispatcher("C7H8O");
 			for(int i=0;i<bonds.size();i++)System.out.println(bonds.get(i));
 		}
 }

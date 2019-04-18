@@ -5,7 +5,9 @@ import java.util.LinkedList;
 import funcGroupUtil.FuncGroupType;
 import funcGroupUtil.GetFuncGroupStrFormula;
 import organicsUtil.BondType;
-
+/*
+ * 醚
+ */
 public class COCService implements TransformService{
 
 	@Override
@@ -15,7 +17,7 @@ public class COCService implements TransformService{
 		int cNumber=numbers.get(0);
 		int hNumber=numbers.get(1);
 		int oNumber=numbers.get(2);
-		if(oNumber==1&&cNumber>=3) {
+		if(oNumber==1&&cNumber>=2) {
 			if((cNumber*2+2)==hNumber) {
 				for(int i=1;i<=cNumber-1;i++) {
 					if(i==1)bonds.add("C"+i+"O1"+BondType.COTeSingleBond);

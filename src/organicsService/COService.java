@@ -59,7 +59,7 @@ public class COService implements TransformService{
 					else if(i==3)bonds.add("C"+i+"C"+(i+1)+BondType.CC120SingleBond);
 					else bonds.add("C"+i+"C"+(i+1)+BondType.CCTeSingleBond);
 				}
-				bonds.add("C2O1"+BondType.CO120DoubleBond);
+				bonds.add("C3O1"+BondType.CO120DoubleBond);
 				for(int i=1;i<=cNumber;i++) {
 					if(i==1)bonds.add("C"+i+"H"+BondType.CH180SingleBond);
 					else if(i==cNumber) {

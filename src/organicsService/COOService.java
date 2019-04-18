@@ -5,7 +5,9 @@ import java.util.LinkedList;
 import funcGroupUtil.FuncGroupType;
 import funcGroupUtil.GetFuncGroupStrFormula;
 import organicsUtil.BondType;
-
+/*
+ * 酯
+ */
 public class COOService implements TransformService{
 
 	@Override

@@ -5,7 +5,9 @@ import java.util.LinkedList;
 import funcGroupUtil.FuncGroupType;
 import funcGroupUtil.GetFuncGroupStrFormula;
 import organicsUtil.BondType;
-
+/*
+ * 酸
+ */
 public class COOHService implements TransformService{
 
 	@Override
@@ -15,7 +17,7 @@ public class COOHService implements TransformService{
 		int cNumber=numbers.get(0);
 		int hNumber=numbers.get(1);
 		int oNumber=numbers.get(2);
-		if(oNumber==2&&cNumber>=3) {
+		if(oNumber==2) {
 			bonds.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.COOH));
 			if(cNumber*2==hNumber) {
 				for(int i=1;i<=cNumber-1;i++) {
@@ -23,7 +25,8 @@ public class COOHService implements TransformService{
 					else bonds.add("C"+i+"C"+(i+1)+BondType.CCTeSingleBond);
 				}
 				for(int i=1;i<=cNumber;i++) {
-					if(i==cNumber) {
+					if(i==1&&i==cNumber)bonds.add("c"+i+"H"+BondType.CH120SingleBond);
+					else if(i!=1&&i==cNumber) {
 						for(int j=0;j<3;j++)bonds.add("C"+i+"H"+BondType.CHTeSingleBond);
 					}else if(i!=1) {
 						for(int j=0;j<2;j++)bonds.add("C"+i+"H"+BondType.CHTeSingleBond);
@@ -58,19 +61,19 @@ public class COOHService implements TransformService{
 					}
 				}
 			}else if((cNumber*2-8)==hNumber&&cNumber>=7) {
+				bonds.clear();
 				bonds.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.BenzeneRing));
-				for(int i=1;i<=cNumber-6;i++) {
-					if(i==1)bonds.add("c"+i+"C"+(i+1)+BondType.CC120SingleBond);
-					else if(i==cNumber-6)bonds.add("C"+i+"c2"+BondType.CC120SingleBond);
+				for(int i=6;i<=cNumber-1;i++) {
+					if(i==6)bonds.add("C"+i+"C"+(i+1)+BondType.CC120SingleBond);
 					else bonds.add("C"+i+"C"+(i+1)+BondType.CCTeSingleBond);
 				}
-				int count=3;
-				for(int i=1;i<=cNumber;i++) {
-					if(i>=2&&i<=cNumber-6) {
+				bonds.add("C"+cNumber+"O1"+BondType.CO120DoubleBond);
+				bonds.add("C"+cNumber+"O2"+BondType.CO120SingleBond);
+				bonds.add("O2H"+BondType.OH90Bond);
+				for(int i=1;i<=cNumber-1;i++) {
+					if(i<=5)bonds.add("C"+i+"H"+BondType.CH120SingleBond);
+					else if(i!=6) {
 						for(int j=0;j<2;j++)bonds.add("C"+i+"H"+BondType.CHTeSingleBond);
-					}else if(i>=cNumber-4){
-						bonds.add("c"+count+"H"+BondType.CH120SingleBond);
-						count++;
 					}
 				}
 			}

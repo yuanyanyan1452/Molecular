@@ -13,17 +13,18 @@ public class OHService implements TransformService {
 		int cNumber=numbers.get(0);
 		int hNumber=numbers.get(1);
 		int oNumber=numbers.get(2);
-		LinkedList<String>list=new LinkedList<String>();
+		LinkedList<String>bonds=new LinkedList<String>();
 		HashMap<Integer,Integer>map=new HashMap<Integer,Integer>();
 		//饱和醇
 		if((cNumber*2+2)==hNumber&&oNumber==1) {
 			//先分配碳碳键
 			for(int i=1;i<=cNumber-1;i++) {
-				list.add("C"+i+"C"+(i+1)+BondType.CCTeSingleBond);
+				bonds.add("C"+i+"C"+(i+1)+BondType.CCTeSingleBond);
 			}
 			//再要分配碳上剩下的键
 			for(int i=1;i<=cNumber;i++) {
-				if(i==1||i==cNumber)map.put(i, 3);
+				if(i==1&&i==cNumber)map.put(i, 4);
+				else if(i==1||i==cNumber)map.put(i, 3);
 				else {
 					map.put(i,2);
 				}
@@ -32,43 +33,72 @@ public class OHService implements TransformService {
 			for(int i=1;i<=cNumber;i++) {
 				while(map.get(i)>0) {
 					if(hNumber>1) {
-						list.add("C"+i+"H"+BondType.CHTeSingleBond);
+						bonds.add("C"+i+"H"+BondType.CHTeSingleBond);
 						hNumber--;
 					}else{
-						list.add("C"+i+"o1"+BondType.COTeSingleBond);
-						list.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.OH));
+						bonds.add("C"+i+"o1"+BondType.COTeSingleBond);
+						bonds.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.OH));
 						break;
 					}
 					map.put(i, map.get(i)-1);
 				}
 			}
-			return list;
 		}else if(cNumber*2==hNumber&&oNumber==1&&cNumber>=2) {//不饱和度为1的醇
 			for(int i=1;i<=cNumber-1;i++) {
-				if(i==1)list.add("C1C2"+BondType.CC120DoubleBond);
-				else if(i==2)list.add("C2C3"+BondType.CC120SingleBond);
-				else list.add("C"+i+"C"+(i+1)+BondType.CCTeSingleBond);
+				if(i==1)bonds.add("C1C2"+BondType.CC120DoubleBond);
+				else if(i==2)bonds.add("C2C3"+BondType.CC120SingleBond);
+				else bonds.add("C"+i+"C"+(i+1)+BondType.CCTeSingleBond);
 			}
 			//分配碳上剩下的空闲键
 			for(int i=1;i<=cNumber;i++) {
 				if(i==1)map.put(i, 2);
 				else if(i==2&&i==cNumber)map.put(i,2);
+				else if(i==2&&i!=cNumber)map.put(i, 1);
 				else if(i==cNumber) map.put(i, 3);
 				else map.put(i, 2);
 			}
 			//分配氢键和羟基
-			list.addAll(dispatcherHO(map,cNumber,hNumber));
-			return list;
-		}else if((cNumber*2-6)==hNumber&&oNumber==1) {//芳香醇
-			list.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.BenzeneRing));
-			list.add("c1o1CO120SingleBond");
-			list.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.OH));
-			for(int i=2;i<=6;i++) {
-				list.add("c"+i+"h"+BondType.CH120SingleBond);
+			bonds.addAll(dispatcherHO(map,cNumber,hNumber));
+		}else if((cNumber*2-2)==hNumber) {//炔
+			for(int i=1;i<=cNumber-1;i++) {
+				if(i==1)bonds.add("C"+i+"C"+(i+1)+BondType.CC180TripleBond);
+				else if(i==2)bonds.add("C"+i+"C"+(i+1)+BondType.CC180SingleBond);
+				else bonds.add("C"+i+"C"+(i+1)+BondType.CCTeSingleBond);
 			}
-			return list;
+			for(int i=1;i<=cNumber;i++) {
+				if(i==1)bonds.add("C"+i+"H"+BondType.CH180SingleBond);
+				else if(i!=2) {
+					for(int j=0;j<2;j++)bonds.add("C"+i+"H"+BondType.CHTeSingleBond);
+				}
+			}
+			if(cNumber==2) {
+				bonds.add("C2o1"+BondType.CO180SingleBond);
+				bonds.add("o1H"+BondType.OH90Bond);
+			}else {
+				bonds.add("C"+cNumber+"o1"+BondType.COTeSingleBond);
+				bonds.add("o1H"+BondType.OH90Bond);
+			}
+		}else if((cNumber*2-6)==hNumber&&oNumber==1) {//芳香醇
+			bonds.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.BenzeneRing));
+			for(int i=6;i<=cNumber-1;i++) {
+				if(i==6)bonds.add("c"+i+"C"+(i+1)+BondType.CC120SingleBond);
+				else bonds.add("C"+i+"C"+(i+1)+BondType.CCTeSingleBond);
+			}
+			for(int i=1;i<=cNumber;i++) {
+				if(i<=5)bonds.add("c"+i+"H"+BondType.CH120SingleBond);
+				else if(i>6) {
+					for(int j=0;j<2;j++)bonds.add("C"+i+"H"+BondType.CHTeSingleBond);
+				}
+			}
+			if(cNumber==6) {
+				bonds.add("c"+cNumber+"o1"+BondType.CO120SingleBond);
+				bonds.add("o1H"+BondType.OH90Bond);
+			}else {
+				bonds.add("C"+cNumber+"o1"+BondType.CO120SingleBond);
+				bonds.add("o1H"+BondType.OH90Bond);
+			}
 		}
-		return null;
+		return bonds;
 	}
 	//烯类（不饱和度为1）的分配氢键和羟基
 	public static LinkedList<String> dispatcherHO(HashMap<Integer,Integer> map,int cNumber,int hNumber){

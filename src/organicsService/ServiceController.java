@@ -47,6 +47,18 @@ public class ServiceController {
 				bonds.add("酸：");
 				bonds.addAll(temp);
 			}
+			COCService cocService=new COCService();
+			temp=cocService.transformMoleFormula(moleFormula);
+			if(temp!=null) {
+				bonds.add("醚：");
+				bonds.addAll(temp);
+			}
+			COOService cooService=new COOService();
+			temp=cooService.transformMoleFormula(moleFormula);
+			if(temp!=null) {
+				bonds.add("酯：");
+				bonds.addAll(temp);
+			}
 		}
 		return bonds;
 	}

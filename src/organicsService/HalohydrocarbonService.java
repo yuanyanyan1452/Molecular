@@ -53,7 +53,7 @@ public class HalohydrocarbonService {
 						bonds.add("C1"+haloType+bondType);
 						map.put(0,map.get(0)-1);
 					}
-					while(map.get(0)!=1) {
+					while(map.get(0)!=0) {
 						bonds.add("C1H"+BondType.CHTeSingleBond);
 						map.put(0,map.get(0)-1);
 					}
@@ -181,7 +181,7 @@ public class HalohydrocarbonService {
 				//分配氢和卤原子
 				for(int i=1;i<=cNumber;i++) {
 					while(xNumber>0&&map.get(i)>0) {
-						if(i==1) {
+						if(i==1||i==2) {
 							switch(haloType) {
 								case F:bonds.add("C"+i+haloType+BondType.CF180SingleBond);break;
 								case Cl:bonds.add("C"+i+haloType+BondType.CCl180SingleBond);break;
@@ -197,7 +197,7 @@ public class HalohydrocarbonService {
 				}
 				for(int i=1;i<=cNumber;i++) {
 					while(hNumber>0&&map.get(i)>0) {
-						if(i==1)bonds.add("C"+i+"H"+BondType.CH180SingleBond);
+						if(i==1||i==2)bonds.add("C"+i+"H"+BondType.CH180SingleBond);
 						else {
 							bonds.add("C"+i+"H"+BondType.CHTeSingleBond);
 						}
@@ -206,18 +206,42 @@ public class HalohydrocarbonService {
 				}
 			}else if(cNumber*2-6==(hNumber+xNumber)) {//卤代芳香烃
 				bonds.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.BenzeneRing));
+				for(int i=6;i<=cNumber-1;i++) {
+					if(i==6)bonds.add("c"+i+"C"+(i+1)+BondType.CC120SingleBond);
+					else bonds.add("C"+i+"C"+(i+1)+BondType.CCTeSingleBond);
+				}
 				for(int i=1;i<=6;i++) {
+					if(i==6&&cNumber>6)break;
 					if(xNumber>0) {
 						switch(haloType) {
-							case F:bonds.add("C"+i+haloType+BondType.CF120SingleBond);break;
-							case Cl:bonds.add("C"+i+haloType+BondType.CCl120SingleBond);break;
-							case Br:bonds.add("C"+i+haloType+BondType.CBr120SingleBond);break;
-							case I:bonds.add("C"+i+haloType+BondType.CI120SingleBond);break;
+							case F:bonds.add("c"+i+haloType+BondType.CF120SingleBond);break;
+							case Cl:bonds.add("c"+i+haloType+BondType.CCl120SingleBond);break;
+							case Br:bonds.add("c"+i+haloType+BondType.CBr120SingleBond);break;
+							case I:bonds.add("c"+i+haloType+BondType.CI120SingleBond);break;
 							default:break;
 						}
 						xNumber--;
 					}else {
-						bonds.add("C"+i+"H"+BondType.CH120SingleBond);
+						bonds.add("c"+i+"H"+BondType.CH120SingleBond);
+					}
+				}
+				int count=2;
+				for(int i=7;i<=cNumber;i++) {
+					if(i<cNumber)count=2;
+					else count=3;
+					for(int j=0;j<count;j++) {
+						if(xNumber>0) {
+							switch(haloType) {
+								case F:bonds.add("C"+i+haloType+BondType.CF120SingleBond);break;
+								case Cl:bonds.add("C"+i+haloType+BondType.CCl120SingleBond);break;
+								case Br:bonds.add("C"+i+haloType+BondType.CBr120SingleBond);break;
+								case I:bonds.add("C"+i+haloType+BondType.CI120SingleBond);break;
+								default:break;
+							}
+							xNumber--;
+						}else {
+							bonds.add("C"+i+"H"+BondType.CH120SingleBond);
+						}
 					}
 				}
 			}
