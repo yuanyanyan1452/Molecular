@@ -1,3 +1,6 @@
+/*
+返回碳氢化合物的bonds数组
+*/
 function transformMoleFormula(cNumber,hNumber){
   var bonds= new Array();
   var map=new Array();
@@ -50,6 +53,34 @@ function transformMoleFormula(cNumber,hNumber){
         }
         map[i] = map[i] - 1;
         count++;
+      }
+    }
+  } else if ((cNumber * 2 - 2) == hNumber) {//一炔烃
+    for (var i = 1; i <= cNumber - 1; i++) {
+      if (i == 1) bonds[count] = "C" + i + "C" + (i + 1) + "CC180TripleBond";
+      else if (i == 2) bonds[count] = "C" + i + "C" + (i + 1) + "CC180SingleBond";
+      else bonds[count] = "C" + i + "C" + (i + 1) + "CCTeSingleBond";
+      count++;
+    }
+    for (var i = 1; i <= cNumber; i++) {
+      if (i == 1) {
+        bonds[count] = "C" + i + "H" + "CH180SingleBond";
+        count++;
+      }
+      else if (i == 2 && i == cNumber) {
+        bonds[count] = "C" + i + "H" + "CH180SingleBond";
+        count++;
+      }
+      else if (i != 2 && i == cNumber) {
+        for (var j = 0; j < 3; j++) {
+          bonds[count] = "C" + i + "H" + "CHTeSingleBond";
+          count++;
+        }
+      } else if (i != 2) {
+        for (var j = 0; j < 2; j++) {
+          bonds[count] = "C" + i + "H" + "CHTeSingleBond";
+          count++;
+        }
       }
     }
   }

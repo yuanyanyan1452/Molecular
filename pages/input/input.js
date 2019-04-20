@@ -2,6 +2,8 @@
 var hydrocarbonService = require("../../utils/hydrocarbonService.js");
 var alkane = require("../../utils/alkane.js");
 var olefin = require("../../utils/olefin.js");
+var alkyne=require("../../utils/alkyne.js");
+var benRing=require("../../utils/benRing.js");
 Page({
 
   /**
@@ -41,14 +43,13 @@ Page({
         if ((cNumber * 2 + 2) == hNumber) {//烷烃
           alkane.drawAlkane(context, bonds, cNumber);
         } else if (cNumber * 2 == hNumber) {//一烯烃 
-          if (cNumber == 1) {
-            console.log("ee");
-            this.setData({ noOrganics: "Ooops!no such Organics." });
-          } else {
-            olefin.drawOlefin(context, bonds, cNumber);
-          }
-
+          olefin.drawOlefin(context, bonds, cNumber);
+        } else if ((cNumber * 2 - 2) == hNumber) {//一炔烃
+          alkyne.drawAlkyne(context,bonds,cNumber);
+        } else if ((cNumber * 2 - 6) == hNumber && cNumber >= 6) {//coding
+          benRing.drawBenRing(context,bonds,cNumber);
         }
+        
       }
       
       
