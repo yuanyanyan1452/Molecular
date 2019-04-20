@@ -15,7 +15,10 @@ public class BaseTest {
 		}
 		//debug entrance
 		public static void main(String[] args) {
-			LinkedList<String> bonds=ServiceController.serviceDispatcher("C7H8O");
-			for(int i=0;i<bonds.size();i++)System.out.println(bonds.get(i));
+			String[] input= {"CH2O","C2H4O"};
+			for(String str:input) {
+				LinkedList<String> bonds=ServiceController.serviceDispatcher(str);
+				for(int i=0;i<bonds.size();i++)System.out.println(bonds.get(i));
+			}
 		}
 }
