@@ -1,5 +1,7 @@
 // pages/input/input.js
 var hydrocarbonService = require("../../utils/hydrocarbonService.js");
+var alkane = require("../../utils/alkane.js");
+var olefin = require("../../utils/olefin.js");
 Page({
 
   /**
@@ -8,7 +10,8 @@ Page({
   data: {
     cNumber:1,
     hNumber:1,
-    oNumber:0
+    oNumber:0,
+    noOrganics:""
   },
   bindInput1:function(e){
     var n=e.detail.value;
@@ -23,96 +26,36 @@ Page({
     if(n!=0)this.setData({oNumber:n});
   },
   transformService:function(e){
-    var bonds = hydrocarbonService.transformMoleFormula(this.data.cNumber, this.data.hNumber);
+    var cNumber = this.data.cNumber;
+    var hNumber=this.data.hNumber;
+    var oNumber=this.data.oNumber;
+    var bonds=new Array();
+    //每次绘画之前清除画布和错误信息
     const context = wx.createCanvasContext('Canvas');
-    var cNumber=this.data.cNumber;
-    console.log(cNumber);
-    var sX=50;var sY=100;
-    //起点碳原子
-    context.arc(sX, sY, 10, 0, 2 * Math.PI);
-    context.setFillStyle("#38261a");
-    context.fill();
     context.draw();
-    //确定方向
-    var threeDirec = 1;
-    var twoDirec=1;
-    bonds.forEach(function(item,array){
-      var res=new RegExp("[CH]","g");
-      var array=item.split(res);
-      //先解决其余的碳原子
-      if(array[2]!=""){
-        var temp = sX + 154 * (array[2] - 1) / 3;
-        context.moveTo(sX, sY);
-        context.lineTo(temp, sY);
-        context.stroke();
-        context.draw(true);
-        context.arc( temp, sY,10, 0, 2 * Math.PI);
-        context.setFillStyle("#38261a");
-      }else{//解决氢原子
-        var temp = 109 / 3;
-        var cX=sX+154*(array[1]-1)/3;
-        if(array[1]==1||array[1]==cNumber){//三个氢
-          switch(threeDirec%3){
-            case 1:
-              context.moveTo(cX, sY)
-              context.lineTo(cX, sY-temp);
-              context.stroke();
-              context.draw(true);
-              context.arc(cX, sY-temp, 10, 0, 2 * Math.PI);
-              break;
-            case 2:
-              if(threeDirec>3){
-                context.moveTo(cX, sY)
-                context.lineTo(cX+temp, sY);
-                context.stroke();
-                context.draw(true);
-                context.arc(cX+temp, sY, 10, 0, 2 * Math.PI);
-              }else{
-                context.moveTo(cX, sY)
-                context.lineTo(cX - temp, sY);
-                context.stroke();
-                context.draw(true);
-                context.arc(cX - temp, sY, 10, 0, 2 * Math.PI);
-              }
-              break;
-            case 0:
-              context.moveTo(cX, sY)
-              context.lineTo(cX, sY+temp);
-              context.stroke();
-              context.draw(true);
-              context.arc(cX, sY+temp, 10, 0, 2 * Math.PI);
-              break;
-            default:
-              break;
+    this.setData({ noOrganics: "" });
+    if(oNumber==0){
+      bonds = hydrocarbonService.transformMoleFormula(cNumber, hNumber);
+      if (bonds.length==0) this.setData({ noOrganics: "Ooops!no such Organics." });
+      else{
+        if ((cNumber * 2 + 2) == hNumber) {//烷烃
+          alkane.drawAlkane(context, bonds, cNumber);
+        } else if (cNumber * 2 == hNumber) {//一烯烃 
+          if (cNumber == 1) {
+            console.log("ee");
+            this.setData({ noOrganics: "Ooops!no such Organics." });
+          } else {
+            olefin.drawOlefin(context, bonds, cNumber);
           }
-          context.setFillStyle("#7CCD7C");
-          threeDirec++;
-        }else{//2个氢原子
-          switch(twoDirec%2){
-            case 1:
-              context.moveTo(cX,sY);
-              context.lineTo(cX,sY-temp);
-              context.stroke();
-              context.draw(true);
-              context.arc(cX,sY-temp,10,0,2*Math.PI);
-              break;
-            case 0:
-              context.moveTo(cX, sY);
-              context.lineTo(cX, sY + temp);
-              context.stroke();
-              context.draw(true);
-              context.arc(cX, sY + temp, 10, 0, 2 * Math.PI);
-              break;
-            default:
-              break;
-          }
-          context.setFillStyle("#7CCD7C");
-          twoDirec++;
+
         }
       }
-      context.fill();
-      context.draw(true);
-    });
+      
+      
+    }
+    
+
+    
   },
   /**
    * 生命周期函数--监听页面加载

@@ -23,6 +23,35 @@ function transformMoleFormula(cNumber,hNumber){
         count++;
       }
     }
+  } else if (cNumber * 2 == hNumber&&cNumber>=2) {//一烯烃 
+    //先分配碳碳键
+    for (var i = 1; i <= cNumber - 1; i++) {
+      if (i == 1) bonds[count] = "C" + i + "C" + (i + 1) + "CC120DoubleBond";
+      else if (i == 2) {
+        bonds[count] = "C" + i + "C" + (i + 1) + "CC120SingleBond";
+      } else {
+        bonds[count] = "C" + i + "C" + (i + 1) + "CCTeSingleBond";
+      }
+      count++;
+    }
+    for (var i = 1; i <= cNumber; i++) {
+      if (i == 1) map[i] = 2;
+      else if (i == 2 && i == cNumber) map[i] = 2;
+      else if (i == 2 && i < cNumber) map[i] = 1;
+      else if (i == cNumber) map[i] = 3;
+      else map[i] = 2;
+    }
+    for (var i = 1; i <= cNumber; i++) {
+      while (map[i] > 0) {
+        if (i == 1 || i == 2) {
+          bonds[count] = "C" + i + "H" + "CH120SingleBond";
+        } else {
+          bonds[count] = "C" + i + "H" + "CHTeSingleBond";
+        }
+        map[i] = map[i] - 1;
+        count++;
+      }
+    }
   }
   return bonds;
 
