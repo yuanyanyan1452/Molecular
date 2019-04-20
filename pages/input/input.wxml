@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="flex-wrp" style="flex-direction:row">
+    <view class="flex-item">分子式:C</view>
+    <input class="input-mandatory" placeholder="1" bindinput="bindInput1" type="number"></input>
+    <view class="flex-item">H</view>
+    <input class="input-mandatory" placeholder="1" bindinput="bindInput2" type="number"></input>
+    <view class="flex-item">O</view>
+    <input class="input-option" placeholder="0" bindinput="bindInput3" type="number"></input>
+  </view>
+  <button class="button" plain="false" type="primary" bindtap="transformService">Show结构式</button>
+  <canvas canvas-id="Canvas" binderror="canvasIdErrorCallback"></canvas>
+</view>

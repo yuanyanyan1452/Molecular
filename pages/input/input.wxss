@@ -1,0 +1,20 @@
+/* pages/input/input.wxss */
+.flex-wrp{
+  display: flex;
+}
+.flex-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input-mandatory{
+  width:100rpx;
+  border-style: solid;
+}
+.input-option{
+  width:100rpx;
+  border-style:dashed;
+}
+.button{
+  margin:60rpx;
+}
