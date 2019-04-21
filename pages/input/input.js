@@ -4,6 +4,8 @@ var alkane = require("../../utils/alkane.js");
 var olefin = require("../../utils/olefin.js");
 var alkyne=require("../../utils/alkyne.js");
 var benRing=require("../../utils/benRing.js");
+var choService=require("../../utils/CHOService.js")
+var choDraw=require("../../utils/CHODraw.js")
 Page({
 
   /**
@@ -31,6 +33,7 @@ Page({
     var cNumber = this.data.cNumber;
     var hNumber=this.data.hNumber;
     var oNumber=this.data.oNumber;
+    console.log(oNumber);
     var bonds=new Array();
     //每次绘画之前清除画布和错误信息
     const context = wx.createCanvasContext('Canvas');
@@ -49,12 +52,15 @@ Page({
         } else if ((cNumber * 2 - 6) == hNumber && cNumber >= 6) {//coding
           benRing.drawBenRing(context,bonds,cNumber);
         }
-        
       }
-      
-      
+    }else if(oNumber==1){
+      bonds=choService.transformMoleFormula(cNumber,hNumber,oNumber);
+      if (bonds ==undefined||bonds.length == 0) this.setData({ noOrganics: "Ooops!no such Organics." });
+      else{
+        choDraw.drawCHO(context,bonds,cNumber,hNumber);
+      }
     }
-    
+    this.setData({oNumber:0});
 
     
   },
