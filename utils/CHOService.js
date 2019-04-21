@@ -15,10 +15,26 @@ function transformMoleFormula(cNumber,hNumber,oNumber){
         for (var j = 0; j < 2; j++) bonds.push("C" + i + "H" + "CHTeSingleBond");
       }
     }
-    bonds.push("C"+cNumber+"O1"+"CO120DoubleBond");
-    bonds.push("C"+cNumber+"H"+"CH120SingleBond");
-    return bonds;
+  } else if ((cNumber * 2) - 2 == hNumber && cNumber >= 3) {
+    for (var i = 1; i <= cNumber - 1; i++) {
+      if (i == 1) bonds.push("C" + i + "C" + (i + 1) + "CC120DoubleBen");
+      else if (i == 2) bonds.push("C" + i + "C" + (i + 1) + "CC120SingleBond");
+      else  {
+       bonds.push("C" + i + "C" + (i + 1) + "CCTeSingleBond");
+      }
+    }
+    for (var i = 1; i <= cNumber - 1; i++) {
+      if (i == 1) {
+        for (var j = 0; j < 2; j++) bonds.push("C" + i + "H" + "CH120SingleBond");
+      } else if (i == 2) bonds.push("C" + i + "H" + "CH120SingleBond");
+      else {
+        for (var j = 0; j < 2; j++) bonds.push("C" + i + "H" + "CHTeSingleBond");
+      }
+    }
   }
+  bonds.push("C" + cNumber + "O1" + "CO120DoubleBond");
+  bonds.push("C" + cNumber + "H" + "CH120SingleBond");
+  return bonds;
 }
 
 module.exports={

@@ -1,11 +1,9 @@
 // pages/input/input.js
 var hydrocarbonService = require("../../utils/hydrocarbonService.js");
-var alkane = require("../../utils/alkane.js");
-var olefin = require("../../utils/olefin.js");
 var alkyne=require("../../utils/alkyne.js");
 var benRing=require("../../utils/benRing.js");
 var choService=require("../../utils/CHOService.js")
-var choDraw=require("../../utils/CHODraw.js")
+var draw=require("../../utils/draw.js")
 Page({
 
   /**
@@ -33,7 +31,6 @@ Page({
     var cNumber = this.data.cNumber;
     var hNumber=this.data.hNumber;
     var oNumber=this.data.oNumber;
-    console.log(oNumber);
     var bonds=new Array();
     //每次绘画之前清除画布和错误信息
     const context = wx.createCanvasContext('Canvas');
@@ -44,20 +41,28 @@ Page({
       if (bonds.length==0) this.setData({ noOrganics: "Ooops!no such Organics." });
       else{
         if ((cNumber * 2 + 2) == hNumber) {//烷烃
-          alkane.drawAlkane(context, bonds, cNumber);
+          draw.drawOrganics(context, bonds, cNumber, hNumber);
         } else if (cNumber * 2 == hNumber) {//一烯烃 
-          olefin.drawOlefin(context, bonds, cNumber);
+          draw.drawOrganics(context, bonds, cNumber, hNumber);
         } else if ((cNumber * 2 - 2) == hNumber) {//一炔烃
-          alkyne.drawAlkyne(context,bonds,cNumber);
+          // alkyne.drawAlkyne(context,bonds,cNumber);
+          draw.drawOrganics(context, bonds, cNumber, hNumber);
         } else if ((cNumber * 2 - 6) == hNumber && cNumber >= 6) {//coding
           benRing.drawBenRing(context,bonds,cNumber);
         }
       }
     }else if(oNumber==1){
       bonds=choService.transformMoleFormula(cNumber,hNumber,oNumber);
+      console.log(bonds);
       if (bonds ==undefined||bonds.length == 0) this.setData({ noOrganics: "Ooops!no such Organics." });
       else{
-        choDraw.drawCHO(context,bonds,cNumber,hNumber);
+        if (cNumber * 2 == hNumber && oNumber == 1){
+          draw.drawOrganics(context, bonds, cNumber, hNumber);
+        }
+        else if ((cNumber * 2) - 2 == hNumber && cNumber >= 3){
+          // console.log("test");
+          draw.drawOrganics(context, bonds, cNumber, hNumber);
+        }
       }
     }
     this.setData({oNumber:0});
