@@ -132,7 +132,16 @@ function drawOrganics(context,bonds,cNumber,hNumber,oNumber,type){
       context.fill();
       context.draw(true);
       cMap.get("O"+eSe).splice(1,1,"0");
-
+    }else if(sMole=="O"&&eMole=="H"){
+      context.moveTo(sX+ccLength*(cNumber),sY);
+      context.lineTo(sX + ccLength * (cNumber)+chLength,sY);
+      context.stroke();
+      context.draw(true);
+      context.arc(sX + ccLength * (cNumber) + chLength, sY,10,0,2*Math.PI);
+      context.setFillStyle("#7CCD7C");
+      context.fill();
+      context.draw(true);
+      cMap.get("O1").splice(0,1,"0");
     }
   }
 }

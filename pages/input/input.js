@@ -1,10 +1,14 @@
 // pages/input/input.js
 var hydrocarbonService = require("../../utils/hydrocarbonService.js");
 var choService=require("../../utils/CHOService.js")
-var coService=require("../../utils/COService.js")
+var cocService=require("../../utils/COCService.js")
 var coohService=require("../../utils/COOHService.js")
-var drawBen = require("../../utils/drawBen.js");
+var cooService=require("../../utils/COOService.js")
+var coService=require("../../utils/COService.js")
+var ohService=require("../../utils/OHService.js")
 
+
+var drawBen = require("../../utils/drawBen.js");
 var draw=require("../../utils/draw.js")
 Page({
 
@@ -36,20 +40,19 @@ Page({
     var bonds=new Array();
     var type="";
     //每次绘画之前清除画布和错误信息
-    const context = wx.createCanvasContext('Canvas');
-    context.draw();
-    const contextCO = wx.createCanvasContext('CanvasCO');
-    context.draw();
+    var context = wx.createCanvasContext('Canvas');
+    var context2 = wx.createCanvasContext('Canvas2');
+    var context3=wx.createCanvasContext("Canvas3");
     this.setData({ noOrganics: "" });
     if(oNumber==0){
       bonds = hydrocarbonService.transformMoleFormula(cNumber, hNumber);
-      if (bonds.length==0) this.setData({ noOrganics: "Ooops!no such Organics." });
+      if (bonds.length==0) this.setData({ noOrganics: "Ooops!没有对应的烃类有机物" });
       else{
         if ((cNumber * 2 - 6) == hNumber && cNumber >= 6) {//芳香烃
           drawBen.drawBenOrganics(context,bonds,cNumber);
         }else{
           type="烃类有机物";
-          draw.drawOrganics(context, bonds, cNumber, hNumbe,oNumber,type);
+          draw.drawOrganics(context, bonds, cNumber, hNumber,oNumber,type);
         }
       }
       this.setData({ oNumber: 0 });
@@ -57,8 +60,7 @@ Page({
       if(cNumber*2>=hNumber){
         //醛的不饱和度至少要是1
         bonds = choService.transformMoleFormula(cNumber, hNumber, oNumber);
-        console.log(bonds);
-        if(bonds == undefined || bonds.length == 0) this.setData({ noOrganics: "Ooops!no such Organics." });
+        if(bonds == undefined || bonds.length == 0) this.setData({ noOrganics: "Ooops!没有对应的醛类有机物" });
         else {
           if ((cNumber * 2 - 8) == hNumber && cNumber >= 7) {//芳香醛
             drawBen.drawBenOrganics(context, bonds, cNumber);
@@ -67,26 +69,49 @@ Page({
             draw.drawOrganics(context, bonds, cNumber, hNumber,oNumber, type);
           }
         }
+        //酮
+        bonds=coService.transformMoleFormula(cNumber,hNumber,oNumber);
+        if(bonds==undefined||bonds.length==0)this.setData({noOrganics:"Ooops!没有对应的酮类有机物"});
+        else{
+          type="脂肪族的酮";
+          draw.drawOrganics(context3,bonds,cNumber,hNumber,oNumber,type);
+        }
       }
       //醚
-      bonds=coService.transformMoleFormula(cNumber,hNumber,oNumber);
-      console.log(bonds);
-      if(bonds == undefined || bonds.length == 0) this.setData({ noOrganics: "Ooops!没有对应的醚类有机物" });
-      else{
+      bonds=cocService.transformMoleFormula(cNumber,hNumber,oNumber);
+      if(bonds == undefined || bonds.length == 0) {
+        // this.setData({ noOrganics: "Ooops!没有对应的醚类有机物" });
+      }else{
         if ((cNumber * 2 - 6) == hNumber && cNumber >= 7) {//芳香醚
           drawBen.drawBenOrganics(context, bonds, cNumber);
         } else {
           type = "脂肪族的醚";
-          draw.drawOrganics(contextCO, bonds, cNumber, hNumber, oNumber, type);
+          draw.drawOrganics(context2, bonds, cNumber, hNumber, oNumber, type);
         }
       }
-
+      //醇
+      bonds=ohService.transformMoleFormula(cNumber,hNumber,oNumber);
+      if(bonds==undefined||bonds.length==0){
+      }else{
+        type="脂肪族的醇";
+        console.log(bonds);
+        draw.drawOrganics(context3,bonds,cNumber,hNumber,oNumber,type);
+      }
       this.setData({ oNumber: 1 });
     }else if(oNumber==2){
       bonds=coohService.transformMoleFormula(cNumber,hNumber,oNumber);
-      console.log(bonds);
-      type="脂肪族的酸";
-      draw.drawOrganics(context, bonds, cNumber, hNumber, oNumber, type);
+      if(bonds==undefined||bonds.length==0)this.setData({noOrganics:"Ooops!没有对应的酸类有机物"});
+      else{
+        type = "脂肪族的酸";
+        draw.drawOrganics(context, bonds, cNumber, hNumber, oNumber, type);
+      }
+      bonds=cooService.transformMoleFormula(cNumber,hNumber,oNumber);
+      if(bonds==undefined||bonds.length==0)this.setData({noOrganics:"Ooops!没有对应的酯类有机物"});
+      else{
+        type="脂肪族的酯";
+        draw.drawOrganics(context2,bonds,cNumber,hNumber,oNumber,type);
+      }
+      this.setData({oNumber:2});
     }
     
     

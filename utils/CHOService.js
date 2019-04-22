@@ -48,8 +48,10 @@ function transformMoleFormula(cNumber,hNumber,oNumber){
       else for (var j = 0; j < 2; j++) bonds.push("C" + i + "H" + "CHTeSingleBond");
     }
   }
-  bonds.push("C" + cNumber + "O1" + "CO120DoubleBond");
-  bonds.push("C" + cNumber + "H" + "CH120SingleBond");
+  if(bonds!=undefined&&bonds.length!=0){
+    bonds.push("C" + cNumber + "O1" + "CO120DoubleBond");
+    bonds.push("C" + cNumber + "H" + "CH120SingleBond");
+  }
   return bonds;
 }
 

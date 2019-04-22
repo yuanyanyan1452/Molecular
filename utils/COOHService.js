@@ -42,9 +42,11 @@ function transformMoleFormula(cNumber,hNumber,oNumber){
       }
     }
   }
-  bonds.push("C1O1CO120DoubleBond");
-  bonds.push("O2C1CO120SingleBond");
-  bonds.push("HO2OH90SingleBond");
+  if(bonds!=undefined&&bonds.length!=0){
+    bonds.push("C1O1CO120DoubleBond");
+    bonds.push("O2C1CO120SingleBond");
+    bonds.push("HO2OH90SingleBond");
+  }
   return bonds;
 }
 module.exports={
