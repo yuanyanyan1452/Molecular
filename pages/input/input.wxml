@@ -10,4 +10,6 @@
   <button class="button" plain="false" type="primary" bindtap="transformService">Show结构式</button>
   <canvas canvas-id="Canvas" binderror="canvasIdErrorCallback"></canvas>
   <view class="noOrganics">{{noOrganics}}</view>
+  <canvas canvas-id="CanvasCO" binderror="canvasIdErrorCallback"></canvas>
+
 </view>

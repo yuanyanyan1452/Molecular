@@ -4,7 +4,12 @@ var ccLength = 154 / 3;
 var chLength = 109 / 3;
 var coDoublelength = 120 / 3;
 
-function drawOrganics(context,bonds,cNumber,hNumber){
+function drawOrganics(context,bonds,cNumber,hNumber,oNumber,type){
+  //先输出有机物的名称
+  context.setTextAlign("center");
+  context.setFontSize(20);
+  context.fillText(type, 150, 40);
+  context.draw();
   //定下起点碳原子
   context.arc(sX, sY, 10, 0, 2 * Math.PI);
   context.setFillStyle("#38261a");
@@ -14,6 +19,9 @@ function drawOrganics(context,bonds,cNumber,hNumber){
   for(var i=1;i<=cNumber;i++){
     var direc=[1,1,1,1];
     cMap.set(i,direc);//每个碳都是四个方向
+  }
+  for(var i=1;i<=oNumber;i++){
+    cMap.set("O"+i,[1,1]);//每个氧是两个方向，关键字是O1，O2之类的
   }
   for(var i=0;i<bonds.length;i++){
     var bond=bonds[i];
@@ -36,6 +44,19 @@ function drawOrganics(context,bonds,cNumber,hNumber){
         context.draw(true);
         cMap.get(sSe).splice(3, 1, "0");
         cMap.get(eSe).splice(3, 1, "0");
+      }else if(bond.includes("Triple")){//碳碳三键的话就多画两个
+        context.moveTo(sX + ccLength * (eSe - 2), sY + 5);//前一个碳为起点
+        context.lineTo(sX + ccLength * (eSe - 1), sY + 5);
+        context.stroke();
+        context.draw(true);
+        context.moveTo(sX + ccLength * (eSe - 2), sY - 5);//前一个碳为起点
+        context.lineTo(sX + ccLength * (eSe - 1), sY - 5);
+        context.stroke();
+        context.draw(true);
+        cMap.get(sSe).splice(1, 1, "0");
+        cMap.get(eSe).splice(3, 1, "0");
+        cMap.get(sSe).splice(1, 1, "0");
+        cMap.get(eSe).splice(3, 1, "0");
       }
       context.arc(sX + ccLength * (eSe - 1),sY, 10, 0, 2 * Math.PI);
       context.setFillStyle("#38261a");
@@ -50,20 +71,46 @@ function drawOrganics(context,bonds,cNumber,hNumber){
         }
       }
     }else if(sMole=="C"&&eMole=="O"){
-      context.moveTo(sX + ccLength * (sSe - 1), sY);
-      context.lineTo(sX + ccLength * (sSe - 1), sY-coDoublelength);
+      if(bond.includes("Double")){
+        context.moveTo(sX + ccLength * (sSe - 1), sY);
+        context.lineTo(sX + ccLength * (sSe - 1), sY - coDoublelength);
+        context.stroke();
+        context.draw(true);
+        context.moveTo(sX + ccLength * (sSe - 1) + 5, sY);
+        context.lineTo(sX + ccLength * (sSe - 1) + 5, sY - coDoublelength);
+        context.stroke();
+        context.draw(true);
+        context.arc(sX + ccLength * (sSe - 1), sY - coDoublelength, 10, 0, 2 * Math.PI);
+        context.setFillStyle("#5ea8f3");
+        context.fill();
+        context.draw(true);
+        cMap.get(sSe).splice(1, 1, "0");
+        cMap.get(sSe).splice(3, 1, "0");
+        cMap.get("O"+eSe).splice(0,1,"0");
+        cMap.get("O" + eSe).splice(1, 1, "0");
+      }else{
+        context.moveTo(sX + ccLength * (sSe - 1), sY );//第一个碳为起点
+        context.lineTo(sX + ccLength * (sSe)-ccLength/2, sY );
+        context.stroke();
+        context.draw(true);
+        context.arc(sX + ccLength * (sSe)-ccLength/2, sY, 10, 0, 2 * Math.PI);
+        context.setFillStyle("#5ea8f3");
+        context.fill();
+        context.draw(true);
+        cMap.get(sSe).splice(0, 1, "0");
+        cMap.get("O"+eSe).splice(1,1,"0");
+      }
+    }else if(sMole=="O"&&eMole=="C"){
+      context.moveTo(sX + ccLength * (eSe - 1)-ccLength/2, sY);//碳的后一半为起点
+      context.lineTo(sX + ccLength * (eSe-1), sY);
       context.stroke();
       context.draw(true);
-      context.moveTo(sX + ccLength * (sSe - 1)+5, sY);
-      context.lineTo(sX + ccLength * (sSe - 1)+5, sY - coDoublelength);
-      context.stroke();
-      context.draw(true);
-      context.arc(sX + ccLength * (sSe - 1), sY - coDoublelength, 10, 0, 2 * Math.PI);
-      context.setFillStyle("#5ea8f3");
+      context.arc(sX + ccLength * (eSe-1), sY, 10, 0, 2 * Math.PI);
+      context.setFillStyle("#38261a");
       context.fill();
       context.draw(true);
-      cMap.get(sSe).splice(1, 1, "0");
-      cMap.get(sSe).splice(3, 1, "0");
+      cMap.get(eSe).splice(2, 1, "0");
+      cMap.get("O" + sSe).splice(0, 1, "0");
     }
   }
 }
