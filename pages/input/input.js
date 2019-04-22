@@ -2,6 +2,7 @@
 var hydrocarbonService = require("../../utils/hydrocarbonService.js");
 var choService=require("../../utils/CHOService.js")
 var coService=require("../../utils/COService.js")
+var coohService=require("../../utils/COOHService.js")
 var drawBen = require("../../utils/drawBen.js");
 
 var draw=require("../../utils/draw.js")
@@ -72,7 +73,6 @@ Page({
       console.log(bonds);
       if(bonds == undefined || bonds.length == 0) this.setData({ noOrganics: "Ooops!没有对应的醚类有机物" });
       else{
-
         if ((cNumber * 2 - 6) == hNumber && cNumber >= 7) {//芳香醚
           drawBen.drawBenOrganics(context, bonds, cNumber);
         } else {
@@ -80,8 +80,13 @@ Page({
           draw.drawOrganics(contextCO, bonds, cNumber, hNumber, oNumber, type);
         }
       }
-      
+
       this.setData({ oNumber: 1 });
+    }else if(oNumber==2){
+      bonds=coohService.transformMoleFormula(cNumber,hNumber,oNumber);
+      console.log(bonds);
+      type="脂肪族的酸";
+      draw.drawOrganics(context, bonds, cNumber, hNumber, oNumber, type);
     }
     
     

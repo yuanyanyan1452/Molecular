@@ -1,10 +1,10 @@
-var sX = 50; var sY = 100;
+var sX = 120; var sY = 100;
 //定下键长(待补充)
 var ccLength = 154 / 3;
 var chLength = 109 / 3;
 var coDoublelength = 120 / 3;
-
 function drawOrganics(context,bonds,cNumber,hNumber,oNumber,type){
+  if(cNumber>=4)context.scale(0.5,0.5);
   //先输出有机物的名称
   context.setTextAlign("center");
   context.setFontSize(20);
@@ -26,10 +26,16 @@ function drawOrganics(context,bonds,cNumber,hNumber,oNumber,type){
   for(var i=0;i<bonds.length;i++){
     var bond=bonds[i];
     var sMole=bond.charAt(0);
-    var sSe=bond.charAt(1);
-    var eMole=bond.charAt(2);
-    var eSe=isNaN(bond.charAt(3))?0:bond.charAt(3);//如果是氢原子则没有序号
-    sSe=sSe*1;eSe=eSe*1;//转变为number类型
+    if(sMole!="H"){
+      var sSe = bond.charAt(1);
+      var eMole = bond.charAt(2);
+      var eSe = isNaN(bond.charAt(3)) ? 0 : bond.charAt(3);//如果是氢原子则没有序号
+    }else{
+      var sSe = 0;
+      var eMole = bond.charAt(1);
+      var eSe = isNaN(bond.charAt(2)) ? 0 : bond.charAt(2);//如果是氢原子则没有序号
+    }
+      sSe=sSe*1;eSe=eSe*1;//转变为number类型
     if(sMole=="C"&&eMole=="C"){
       context.moveTo(sX+ccLength * (eSe - 2), sY);//前一个碳为起点
       context.lineTo(sX + ccLength * (eSe - 1), sY);
@@ -111,6 +117,22 @@ function drawOrganics(context,bonds,cNumber,hNumber,oNumber,type){
       context.draw(true);
       cMap.get(eSe).splice(2, 1, "0");
       cMap.get("O" + sSe).splice(0, 1, "0");
+    }else if(sMole=="H"&&eMole=="O"){
+      context.moveTo(sX-2*ccLength,sY);
+      context.arc(sX-2*ccLength,sY,10,0,2*Math.PI);
+      context.setFillStyle("#7CCD7C");
+      context.fill();
+      context.draw(true);
+      context.moveTo(sX - 2 * ccLength, sY);
+      context.lineTo(sX,sY);
+      context.stroke();
+      context.draw(true);
+      context.arc(sX-ccLength,sY,10,0,2*Math.PI);
+      context.setFillStyle("#5ea8f3");
+      context.fill();
+      context.draw(true);
+      cMap.get("O"+eSe).splice(1,1,"0");
+
     }
   }
 }
@@ -159,6 +181,12 @@ function drawH(cSe,leftBond,context,cMap){
       break;
   }
   cMap.get(cSe).splice(leftBond, 1, "0");
+}
+function drawBenRing(context){
+  context.moveTo(sX,sY);
+  context.lineTo(sX-5,sY-5*Math.sqrt(3));
+  context.stroke();
+  context.draw();
 }
 module.exports={
   drawOrganics: drawOrganics
