@@ -2,7 +2,7 @@ package organicsService;
 import java.util.Scanner;
 import java.util.LinkedList;
 public class InputMoleFormula {
-	/*
+	/*test
 	 * 获取输入的分子式字符串
 	 * return:string
 	 */

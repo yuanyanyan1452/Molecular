@@ -11,11 +11,11 @@ public class BaseTest {
 		public static LinkedList<String> test(String moleFormula) {
 			LinkedList<String> bonds=ServiceController.serviceDispatcher(moleFormula);
 			for(int i=0;i<bonds.size();i++)System.out.println(bonds.get(i));
-			return bonds;
+			return bonds;	
 		}
 		//debug entrance
 		public static void main(String[] args) {
-			String[] input= {"CH2O","C2H4O"};
+			String[] input= {"蔗糖"};
 			for(String str:input) {
 				LinkedList<String> bonds=ServiceController.serviceDispatcher(str);
 				for(int i=0;i<bonds.size();i++)System.out.println(bonds.get(i));
