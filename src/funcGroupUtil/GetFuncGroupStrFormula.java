@@ -51,6 +51,13 @@ public class GetFuncGroupStrFormula {
 			list.add("c"+(sequenceC)+" o"+(++sequenceO)+" "+BondType.COTeSingleBond);
 			list.add("o"+(sequenceO)+" H "+BondType.OH90Bond);
 		}
+		//双醛基
+		if(funcGroup.equals(FuncGroupType.CHO2)) {
+			list.add("c1 o1 "+BondType.CO120DoubleBond);
+			list.add("c1 H "+BondType.CH120SingleBond);
+			list.add("c2 o2 "+BondType.CO120DoubleBond);
+			list.add("c2 H "+BondType.CH120SingleBond);
+		}
 		return list;
 	}
 	

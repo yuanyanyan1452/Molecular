@@ -17,6 +17,7 @@ public class OHService implements TransformService {
 		HashMap<Integer,Integer>map=new HashMap<Integer,Integer>();
 		//饱和醇
 		if((cNumber*2+2)==hNumber&&oNumber==1) {
+			bonds.add("#一元醇");
 			//先分配碳碳键
 			for(int i=1;i<=cNumber-1;i++) {
 				bonds.add("C"+i+" C"+(i+1)+" "+BondType.CCTeSingleBond);
@@ -44,6 +45,7 @@ public class OHService implements TransformService {
 				}
 			}
 		}else if(cNumber*2==hNumber&&oNumber==1&&cNumber>=2) {//不饱和度为1的醇
+			bonds.add("#一元醇");
 			for(int i=1;i<=cNumber-1;i++) {
 				if(i==1)bonds.add("C1 C2 "+BondType.CC120DoubleBond);
 				else if(i==2)bonds.add("C2 C3 "+BondType.CC120SingleBond);
@@ -60,6 +62,7 @@ public class OHService implements TransformService {
 			//分配氢键和羟基
 			bonds.addAll(dispatcherHO(map,cNumber,hNumber));
 		}else if((cNumber*2-2)==hNumber) {//炔
+			bonds.add("#一元醇");
 			for(int i=1;i<=cNumber-1;i++) {
 				if(i==1)bonds.add("C"+i+" C"+(i+1)+" "+BondType.CC180TripleBond);
 				else if(i==2)bonds.add("C"+i+" C"+(i+1)+" "+BondType.CC180SingleBond);
@@ -79,6 +82,7 @@ public class OHService implements TransformService {
 				bonds.add("o1 H "+BondType.OH90Bond);
 			}
 		}else if((cNumber*2-6)==hNumber&&oNumber==1) {//芳香醇
+			bonds.add("#一元醇");
 			bonds.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.BenzeneRing));
 			for(int i=6;i<=cNumber-1;i++) {
 				if(i==6)bonds.add("C"+i+" C"+(i+1)+" "+BondType.CC120SingleBond);

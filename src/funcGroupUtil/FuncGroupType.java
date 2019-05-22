@@ -10,6 +10,6 @@ public enum FuncGroupType {
 	OH,//羟基-醇
 	CHO,//醛基-醛
 	COOH,//羧基-酸
-	
+	CHO2,//双醛基
 	
 }

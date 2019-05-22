@@ -20,6 +20,7 @@ public class COOHService implements TransformService{
 		if(oNumber==2) {
 			bonds.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.COOH));
 			if(cNumber*2==hNumber) {
+				bonds.add("#一元酸");
 				for(int i=1;i<=cNumber-1;i++) {
 					if(i==1)bonds.add("c"+i+" C"+(i+1)+" "+BondType.CC120SingleBond);
 					else bonds.add("C"+i+" C"+(i+1)+" "+BondType.CCTeSingleBond);
@@ -33,6 +34,7 @@ public class COOHService implements TransformService{
 					}
 				}
 			}else if((cNumber*2-2)==hNumber) {
+				bonds.add("#一元酸");
 				for(int i=1;i<=cNumber-1;i++) {
 					if(i==1)bonds.add("c"+i+" C"+(i+1)+" "+BondType.CC120SingleBond);
 					else if(i==cNumber-2)bonds.add("C"+i+" C"+(i+1)+" "+BondType.CC120SingleBond);
@@ -48,6 +50,7 @@ public class COOHService implements TransformService{
 					}
 				}
 			}else if((cNumber*2-4)==hNumber) {
+				bonds.add("#一元酸");
 				for(int i=1;i<=cNumber-1;i++) {
 					if(i==1)bonds.add("c"+i+" C"+(i+1)+" "+BondType.CC120SingleBond);
 					else if(i==cNumber-1)bonds.add("C"+i+" C"+(i+1)+" "+BondType.CC180TripleBond);
@@ -61,6 +64,7 @@ public class COOHService implements TransformService{
 					}
 				}
 			}else if((cNumber*2-8)==hNumber&&cNumber>=7) {
+				bonds.add("#一元酸");
 				bonds.clear();
 				bonds.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.BenzeneRing));
 				for(int i=6;i<=cNumber-1;i++) {

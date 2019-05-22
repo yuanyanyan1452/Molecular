@@ -19,6 +19,7 @@ public class COCService implements TransformService{
 		int oNumber=numbers.get(2);
 		if(oNumber==1&&cNumber>=2) {
 			if((cNumber*2+2)==hNumber) {
+				bonds.add("#一元醚");
 				for(int i=1;i<=cNumber-1;i++) {
 					if(i==1)bonds.add("C"+i+" O1 "+BondType.COTeSingleBond);
 					else bonds.add("C"+i+" C"+(i+1)+" "+BondType.CCTeSingleBond);
@@ -32,6 +33,7 @@ public class COCService implements TransformService{
 					}
 				}
 			}else if(cNumber*2==hNumber) {
+				bonds.add("#一元醚");
 				for(int i=1;i<=cNumber-1;i++) {
 					if(i==1)bonds.add("C"+i+" C"+(i+1)+" "+BondType.CC120DoubleBond);
 					else if(i==2)bonds.add("C"+i+" O1 "+BondType.CO120SingleBond);
@@ -49,6 +51,7 @@ public class COCService implements TransformService{
 					}
 				}
 			}else if((cNumber*2-2)==hNumber) {
+				bonds.add("#一元醚");
 				for(int i=1;i<=cNumber-1;i++) {
 					if(i==1)bonds.add("C"+i+" C"+(i+1)+" "+BondType.CC180TripleBond);
 					else if(i==2)bonds.add("C"+i+" O1 "+BondType.CO180SingleBond);
@@ -64,6 +67,7 @@ public class COCService implements TransformService{
 					}
 				}
 			}else if((cNumber*2-6)==hNumber&&cNumber>=7) {
+				bonds.add("#一元醚");
 				bonds.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.BenzeneRing));
 				for(int i=6;i<=cNumber-1;i++) {
 					if(i==6)bonds.add("C"+i+" O1 "+BondType.CO120SingleBond);

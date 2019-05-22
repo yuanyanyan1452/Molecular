@@ -15,7 +15,7 @@ public class BaseTest {
 		}
 		//debug entrance
 		public static void main(String[] args) {
-			String[] input= {"蔗糖"};
+			String[] input= {"C2H2O2"};
 			for(String str:input) {
 				LinkedList<String> bonds=ServiceController.serviceDispatcher(str);
 				for(int i=0;i<bonds.size();i++)System.out.println(bonds.get(i));

@@ -12,6 +12,7 @@ public class ServiceController {
  * 具体的service如下：
  * HydrocarbonService：只含碳氢的
  * HalohydrocarbonService：卤代烃
+ * 应做的优化：应将有机物名称的添加放到每一个具体的service中来做
  */
 	private static HaloType haloType;
 	public static LinkedList<String>  serviceDispatcher(String moleFormula) {
@@ -23,47 +24,47 @@ public class ServiceController {
 		}else if(matchHalohydrocarbon(moleFormula)) {
 			bonds=HalohydrocarbonService.transformMoleFormula(moleFormula,haloType);
 		}else if(moleFormula.matches("[Cc]([1-9]{1}[0-9]{0,})?[Hh]([1-9]{1}[0-9]{0,})?[Oo]([1-9]{1}[0-9]{0,})?")) {
+			//醇
 			OHService oHService=new OHService();
 			temp=oHService.transformMoleFormula(moleFormula);
 			if(!temp.isEmpty()) {
-				bonds.add("醇：");
 				bonds.addAll(temp);
 			}
+			//醛
 			CHOService choService=new CHOService();
 			temp=choService.transformMoleFormula(moleFormula);
 			if(!temp.isEmpty()) {
-				bonds.add("醛：");
 				bonds.addAll(temp);
 			}
+			//酮
 			COService coService=new COService();
 			temp=coService.transformMoleFormula(moleFormula);
 			if(!temp.isEmpty()) {
-				bonds.add("酮：");
 				bonds.addAll(temp);
 			}
+			//酸
 			COOHService coohService=new COOHService();
 			temp=coohService.transformMoleFormula(moleFormula);
 			if(!temp.isEmpty()) {
-				bonds.add("酸：");
 				bonds.addAll(temp);
 			}
+			//醚
 			COCService cocService=new COCService();
 			temp=cocService.transformMoleFormula(moleFormula);
 			if(!temp.isEmpty()) {
-				bonds.add("醚：");
 				bonds.addAll(temp);
 			}
+			//酯
 			COOService cooService=new COOService();
 			temp=cooService.transformMoleFormula(moleFormula);
 			if(!temp.isEmpty()) {
-				bonds.add("酯：");
 				bonds.addAll(temp);
 			}
 		}else {//按照有机物名称来解析
 			LifeBasicService lifeBasicService=new LifeBasicService();
 			temp=lifeBasicService.transformMoleFormula(moleFormula);
 			if(!temp.isEmpty()) {
-				bonds.add(moleFormula+"：");
+				bonds.add("#"+moleFormula);
 				bonds.addAll(temp);
 			}
 		}
