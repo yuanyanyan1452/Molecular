@@ -99,17 +99,85 @@ public class CHOService implements TransformService{
 				if(cNumber==2) {
 					bonds.add("c1 c2 "+BondType.CC120SingleBond);
 				}else {
-					
+					for(int i=1;i<=cNumber-2;i++) {
+						if(i==cNumber-2) {
+							bonds.add("C"+i+" c2 "+BondType.CC120SingleBond);
+						}else {
+							bonds.add("C"+i+" C"+(i+1)+" "+BondType.CCTeSingleBond);
+						}
+						bonds.add("C"+i+" H "+BondType.CHTeSingleBond);
+						bonds.add("C"+i+" H "+BondType.CHTeSingleBond);
+					}
+					bonds.add("c1 C1 "+BondType.CC120SingleBond);
 				}
 			}else if((cNumber*2-4)==hNumber&&cNumber>=4) {//中间连烯烃
 				bonds.add("#二元醛");
-				
+				for(int i=1;i<=cNumber-2;i++) {
+					if(i==1||i==2)bonds.add("C"+i+" H "+BondType.CH120SingleBond);
+					else {
+						bonds.add("C"+i+" H "+BondType.CHTeSingleBond);
+						bonds.add("C"+i+" H "+BondType.CHTeSingleBond);
+					}
+				}
+				if(cNumber==4) {
+					bonds.add("c1 C1 "+BondType.CC120SingleBond);
+					bonds.add("C1 C2 "+BondType.CC120DoubleBond);
+					bonds.add("C2 c2 "+BondType.CC120SingleBond);
+				}else {
+					for(int i=1;i<=cNumber-2;i++) {
+						if(i==1)bonds.add("C"+i+" C"+(i+1)+" "+BondType.CC120DoubleBond);
+						else if(i==2)bonds.add("C"+i+" C"+(i+1)+" "+BondType.CC120SingleBond);
+						else if(i==cNumber-2)bonds.add("C"+i+" c2 "+BondType.CC120SingleBond);
+						else bonds.add("C"+i+" C"+(i+1)+" "+BondType.CCTeSingleBond);
+					}
+					bonds.add("c1 C1 "+BondType.CC120SingleBond);
+				}
 			}else if((cNumber*2-6)==hNumber&&cNumber>=4) {//中间连炔烃
 				bonds.add("#二元醛");
-				
+				if(cNumber==4) {
+					bonds.add("c1 C1 "+BondType.CC180SingleBond);
+					bonds.add("C1 C2 "+BondType.CC180TripleBond);
+					bonds.add("C2 c2 "+BondType.CC180SingleBond);
+				}else {
+					bonds.add("c1 C1 "+BondType.CC180SingleBond);
+					for(int i=1;i<=cNumber-2;i++) {
+						if(i==1) {
+							bonds.add("C"+i+" C"+(i+1)+" "+BondType.CC180TripleBond);
+						}else if(i==2)bonds.add("C"+i+" C"+(i+1)+" "+BondType.CC180SingleBond);
+						else if(i==cNumber-2) {
+							bonds.add("C"+i+" C"+(i+1)+" "+BondType.CC120SingleBond);
+							bonds.add("C"+i+" H "+BondType.CHTeSingleBond);
+							bonds.add("C"+i+" H "+BondType.CHTeSingleBond);
+						}else {
+							bonds.add("C"+i+" C"+(i+1)+" "+BondType.CCTeSingleBond);
+							bonds.add("C"+i+" H "+BondType.CHTeSingleBond);
+							bonds.add("C"+i+" H "+BondType.CHTeSingleBond);
+						}
+					}
+				}
 			}else if((cNumber*2-10)==hNumber&&cNumber>=8) {////中间连苯环
 				bonds.add("#二元醛");
-				
+				bonds.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.BenzeneRing));
+				if(cNumber==8) {
+					for(int i=1;i<=6;i++) {
+						if(i==2)bonds.add("c1 C2 "+BondType.CC120SingleBond);
+						else if(i==6)bonds.add("C"+i+" c2 "+BondType.CC120SingleBond);
+						else bonds.add("C"+i+" H "+BondType.CH120SingleBond);
+					}
+				}else {
+					for(int i=1;i<=6;i++) {
+						if(i==2)bonds.add("c1 C2 "+BondType.CC120SingleBond);
+						else if(i==6)bonds.add("C"+i+" C7 "+BondType.CC120SingleBond);
+						else bonds.add("C"+i+" H "+BondType.CH120SingleBond);
+					}
+					for(int i=7;i<=cNumber-2;i++) {
+						if(i==cNumber-2) {
+							bonds.add("C"+i+" c2 "+BondType.CC120SingleBond);
+						}else bonds.add("C"+i+" C"+(i+1)+" "+BondType.CCTeSingleBond);
+						bonds.add("C"+i+" H "+BondType.CHTeSingleBond);
+						bonds.add("C"+i+" H "+BondType.CHTeSingleBond);
+					}
+				}
 			}
 			if(!bonds.isEmpty())bonds.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.CHO2));
 			return bonds;

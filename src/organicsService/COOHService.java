@@ -18,7 +18,6 @@ public class COOHService implements TransformService{
 		int hNumber=numbers.get(1);
 		int oNumber=numbers.get(2);
 		if(oNumber==2) {
-			bonds.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.COOH));
 			if(cNumber*2==hNumber) {
 				bonds.add("#一元酸");
 				for(int i=1;i<=cNumber-1;i++) {
@@ -81,6 +80,8 @@ public class COOHService implements TransformService{
 					}
 				}
 			}
+			if(!bonds.isEmpty())bonds.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.COOH));
+
 		}
 		return bonds;
 	}
