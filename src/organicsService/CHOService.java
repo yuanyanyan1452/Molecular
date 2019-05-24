@@ -2,9 +2,9 @@ package organicsService;
 
 import java.util.LinkedList;
 
-import funcGroupUtil.FuncGroupType;
-import funcGroupUtil.GetFuncGroupStrFormula;
 import organicsUtil.BondType;
+import organicsUtil.FuncGroupType;
+import organicsUtil.GetFuncGroupStrFormula;
 /*
  * 一元醛
  * 二元醛
@@ -20,6 +20,7 @@ public class CHOService implements TransformService{
 		int oNumber=list.get(2);
 		if(oNumber==1) {//一元醛
 		if(cNumber*2==hNumber) {//该醛基连烷烃
+			int hNum=1;
 			bonds.add("#一元醛");
 			for(int i=1;i<=cNumber-1;i++) {
 				if(i==cNumber-1)bonds.add("C"+i+" c1 "+BondType.CCTeSingleBond);
@@ -27,13 +28,13 @@ public class CHOService implements TransformService{
 			}
 			for(int i=1;i<=cNumber;i++) {
 				if(i==1&&i==cNumber) {
-					bonds.add("c"+i+" H "+BondType.CH120SingleBond);
+					bonds.add("c"+i+" H"+(hNum++)+" "+BondType.CH120SingleBond);
 				}else if(i==1&&i!=cNumber) {
-					for(int j=0;j<3;j++)bonds.add("C"+i+" H "+BondType.CHTeSingleBond);
+					for(int j=0;j<3;j++)bonds.add("C"+i+" H"+(hNum++)+" "+BondType.CHTeSingleBond);
 				}else if(i==cNumber){
 					break;
 				}else {
-					for(int j=0;j<2;j++)bonds.add("C"+i+" H "+BondType.CHTeSingleBond);
+					for(int j=0;j<2;j++)bonds.add("C"+i+" H"+(hNum++)+" "+BondType.CHTeSingleBond);
 				}
 			}
 			bonds.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.CHO));

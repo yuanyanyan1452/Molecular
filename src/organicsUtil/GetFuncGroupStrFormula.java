@@ -1,6 +1,5 @@
-package funcGroupUtil;
+package organicsUtil;
 
-import organicsUtil.BondType;
 import java.util.LinkedList;
 /*
  * 得到某个官能团的结构式
@@ -41,7 +40,7 @@ public class GetFuncGroupStrFormula {
 			int sequenceC=1;
 			int sequenceO=1;
 			list.add("c"+(sequenceC)+" o"+(sequenceO)+" "+BondType.CO120DoubleBond);
-			list.add("c"+(sequenceC)+" H "+BondType.CH120SingleBond);
+			list.add("c"+(sequenceC)+" h1 "+BondType.CH120SingleBond);
 		}
 		//羧基
 		if(funcGroup.equals(FuncGroupType.COOH)) {

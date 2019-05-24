@@ -2,9 +2,9 @@ package organicsService;
 
 import java.util.LinkedList;
 
-import funcGroupUtil.FuncGroupType;
-import funcGroupUtil.GetFuncGroupStrFormula;
 import organicsUtil.BondType;
+import organicsUtil.FuncGroupType;
+import organicsUtil.GetFuncGroupStrFormula;
 
 /*
  * 酮基

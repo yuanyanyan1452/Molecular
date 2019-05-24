@@ -1,11 +1,9 @@
 package organicsService;
 import java.util.LinkedList;
-
-import funcGroupUtil.FuncGroupType;
-import funcGroupUtil.GetFuncGroupStrFormula;
-
 import java.util.HashMap;
 import organicsUtil.BondType;
+import organicsUtil.FuncGroupType;
+import organicsUtil.GetFuncGroupStrFormula;
 /*
  * 只含碳氢的化合物，或者简称为烃
  * 分为烷烃烯烃炔烃芳香烃

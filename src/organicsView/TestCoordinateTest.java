@@ -6,6 +6,8 @@ import javafx.application.Application;
 import javafx.scene.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import organicsController.ServiceController;
+import organicsUtil.Mole;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
 import javafx.scene.shape.Cylinder;
@@ -14,7 +16,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
-public class C2H6App extends Application {
+public class TestCoordinateTest extends Application {
 
     final Group root = new Group();
     final Xform axisGroup = new Xform();
@@ -152,9 +154,6 @@ public class C2H6App extends Application {
     }
     
     private void buildMolecule() {
-        //======================================================================
-        // THIS IS THE IMPORTANT MATERIAL FOR THE TUTORIAL
-        //======================================================================
 
         final PhongMaterial redMaterial = new PhongMaterial();
         redMaterial.setDiffuseColor(Color.DARKRED);
@@ -165,84 +164,44 @@ public class C2H6App extends Application {
 
         final PhongMaterial greyMaterial = new PhongMaterial();
         greyMaterial.setDiffuseColor(Color.DARKGREY);
-
+        
+        final PhongMaterial yellowMaterial = new PhongMaterial();
+        greyMaterial.setDiffuseColor(Color.BLANCHEDALMOND);
+        
+		LinkedList<Mole> moles=ServiceController.serviceDispatcher("C2H6");
         Xform moleculeXform = new Xform();
-        LinkedList<Xform> bondXforms=new LinkedList<Xform>();//装化学键的form，7个
-        LinkedList<Xform> moleXforms=new LinkedList<Xform>();//装碳氢原子的form，8个
-        for(int i=1;i<=7;i++) {
-        	bondXforms.add(new Xform());
-        }
-        for(int i=1;i<=8;i++) {
+        int sum=moles.size();
+        LinkedList<Xform> moleXforms=new LinkedList<Xform>();//装碳氢原子的form
+        for(int i=1;i<=sum;i++) {
         	moleXforms.add(new Xform());
         }
-        //建立8个原子和7个化学键
         LinkedList<Sphere> spheres=new LinkedList<Sphere>();
-        LinkedList<Cylinder> bonds=new LinkedList<Cylinder>();
-        for(int i=1;i<=8;i++) {
-        	if(i==1||i==2) {
+        for(int i=1;i<=sum;i++) {
+        	String name=moles.get(i-1).name;
+        	if(name.contains("C")||name.contains("c")) {
         		Sphere c=new Sphere(40);
         		c.setMaterial(redMaterial);
-        		spheres.add(c);//两个碳原子
-        	}else {
+        		spheres.add(c);//碳原子
+        	}else if(name.contains("H")||name.contains("h")){
         		Sphere h=new Sphere(30);
         		h.setMaterial(whiteMaterial);
-        		spheres.add(h);//6个氢原子
-        	}
-        }
-        for(int i=1;i<=7;i++) {
-        	if(i==1) {
-        		Cylinder CCBond = new Cylinder(5, 154);
-                CCBond.setMaterial(greyMaterial);
-            	bonds.add(CCBond);//碳碳键
-        	}else {
-        		Cylinder CHBond = new Cylinder(5, 109);
-                CHBond.setMaterial(greyMaterial);
-            	bonds.add(CHBond);//碳氢键
+        		spheres.add(h);//氢原子
+        	}else if(name.contains("O")||name.contains("o")) {
+        		Sphere c=new Sphere(20);
+        		c.setMaterial(yellowMaterial);
+        		spheres.add(c);//氧原子
         	}
         }
         //安装所有的forms
-        moleculeXform.getChildren().addAll(bondXforms);//7个
-        moleculeXform.getChildren().addAll(moleXforms);//8个
-        //所有的forms里面安装具体的组件（原子和化学键）
-        for(int i=0;i<7;i++) {
-        	bondXforms.get(i).getChildren().add(bonds.get(i));
-        }
-        for(int i=0;i<8;i++) {
+        moleculeXform.getChildren().addAll(moleXforms);
+        //所有的forms里面安装具体的组件（原子）
+        for(int i=0;i<sum;i++) {
         	moleXforms.get(i).getChildren().add(spheres.get(i));
         }
-        //8原子坐标,两个碳+6个氢
-        for(int i=0;i<8;i++) {
-        	Xform temp=moleXforms.get(i);
-        	if(i==0)		temp.setTranslate(0,0,0);
-        	else if(i==1)	temp.setTranslate(0,154,0);
-        	else if(i==2)	temp.setTranslate(-51, -109/3,51*Math.sqrt(3));
-        	else if(i==3)	temp.setTranslate(102, -109/3,0);
-        	else if(i==4)	temp.setTranslate(-51, -109/3,-51*Math.sqrt(3));
-        	else {
-        		Xform symmetry=moleXforms.get(i-3);
-        		temp.setTranslate(0-(symmetry.t.getX()), 154-(symmetry.t.getY()),0-(symmetry.t.getZ()));
-        	}
-        }
-        //键角度和移动坐标（原子坐标的一半）
-        for(int i=0;i<7;i++) {
-        	Xform bond=bondXforms.get(i);
-        	if(i==0) {//碳碳键
-        		bond.setTranslate(0, 154/2,0);
-        	}else if(i==1) {
-        		bond.setRotate(90,-30,19);
-                bond.setTranslate(-51/2, -109/6,51*Math.sqrt(3)/2);
-        	}else if(i==2) {
-        		bond.setRotate(0,0,71);
-                bond.setTranslate(51, -109/6,0);
-        	}else if(i==3) {
-        		bond.setRotate(90,30,19);
-                bond.setTranslate(-51.0/2, -109.0/6,-51.0*Math.sqrt(3)/2);
-        	}else  {
-        		Xform tempBond=bondXforms.get(i-3);
-        		Xform tempMole=moleXforms.get(i-2);
-        		bond.setRotate(tempBond.rx.getAngle(),tempBond.ry.getAngle(),tempBond.rz.getAngle());
-        		bond.setTranslate(0-(tempMole.t.getX())/2, 154-(tempMole.t.getY())/2,0-(tempMole.t.getZ())/2);//这里待解释
-        	}
+        //原子坐标
+        for(int i=0;i<sum;i++) {
+        	Mole temp=moles.get(i);
+        	moleXforms.get(i).setTranslate(temp.x, temp.y, temp.z);
         }
         moleculeGroup.getChildren().add(moleculeXform);
 

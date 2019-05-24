@@ -1,4 +1,4 @@
-package funcGroupUtil;
+package organicsUtil;
 /*
  * 官能团类型
  * 通过官能团获取的原子以小写形式表示

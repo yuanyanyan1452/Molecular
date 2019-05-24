@@ -1,4 +1,4 @@
-package organicsService;
+package organicsCoordinate;
 
 import java.util.HashMap;
 
@@ -7,6 +7,8 @@ import organicsUtil.FuncGroupType;
 import organicsUtil.GetFuncGroupStrFormula;
 import organicsUtil.HaloType;
 import java.util.LinkedList;
+
+import organicsController.InputMoleFormula;
 /*
  * 卤代烃
  * 烃中的氢原子被F、Cl、Br、I替代即氟氯溴碘代烃

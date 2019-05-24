@@ -1,11 +1,9 @@
 package organicsService;
 import java.util.LinkedList;
-
-import funcGroupUtil.FuncGroupType;
-import funcGroupUtil.GetFuncGroupStrFormula;
-
 import java.util.HashMap;
 import organicsUtil.BondType;
+import organicsUtil.FuncGroupType;
+import organicsUtil.GetFuncGroupStrFormula;
 
 public class OHService implements TransformService {
 	public LinkedList<String> transformMoleFormula(String moleFormula) {
