@@ -20,19 +20,18 @@ public class CHOService implements TransformService{
 		int oNumber=list.get(2);
 		if(oNumber==1) {//一元醛
 		if(cNumber*2==hNumber) {//该醛基连烷烃
-			int hNum=1;
+			int hNum=2;
 			bonds.add("#一元醛");
-			for(int i=1;i<=cNumber-1;i++) {
-				if(i==cNumber-1)bonds.add("C"+i+" c1 "+BondType.CCTeSingleBond);
-				else bonds.add("C"+i+" C"+(i+1)+" "+BondType.CCTeSingleBond);
+			for(int i=cNumber;i>=2;i--) {
+				if(i==2)bonds.add("C"+i+" C1 "+BondType.CCTeSingleBond);
+				else bonds.add("C"+i+" C"+(i-1)+" "+BondType.CCTeSingleBond);
 			}
 			for(int i=1;i<=cNumber;i++) {
 				if(i==1&&i==cNumber) {
-					bonds.add("c"+i+" H"+(hNum++)+" "+BondType.CH120SingleBond);
+					bonds.add("C"+i+" H"+(hNum++)+" "+BondType.CH120SingleBond);
 				}else if(i==1&&i!=cNumber) {
-					for(int j=0;j<3;j++)bonds.add("C"+i+" H"+(hNum++)+" "+BondType.CHTeSingleBond);
 				}else if(i==cNumber){
-					break;
+					for(int j=0;j<3;j++)bonds.add("C"+i+" H"+(hNum++)+" "+BondType.CHTeSingleBond);
 				}else {
 					for(int j=0;j<2;j++)bonds.add("C"+i+" H"+(hNum++)+" "+BondType.CHTeSingleBond);
 				}

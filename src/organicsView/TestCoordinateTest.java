@@ -108,10 +108,10 @@ public class TestCoordinateTest extends Application {
                 double modifier = 1.0;
                 
                 if (me.isControlDown()) {
-                    modifier = CONTROL_MULTIPLIER;
+                    modifier = CONTROL_MULTIPLIER;//按了control之后的旋转速度为0.1（慢）
                 } 
                 if (me.isShiftDown()) {
-                    modifier = SHIFT_MULTIPLIER;
+                    modifier = SHIFT_MULTIPLIER;//按了shift之后的旋转速度为10（快）
                 }     
                 if (me.isPrimaryButtonDown()) {
                     cameraXform.ry.setAngle(cameraXform.ry.getAngle() - mouseDeltaX*MOUSE_SPEED*modifier*ROTATION_SPEED);  
@@ -168,7 +168,8 @@ public class TestCoordinateTest extends Application {
         final PhongMaterial yellowMaterial = new PhongMaterial();
         greyMaterial.setDiffuseColor(Color.BLANCHEDALMOND);
         
-		LinkedList<Mole> moles=ServiceController.serviceDispatcher("C15H24");
+		LinkedList<Mole> moles=ServiceController.serviceDispatcher("C8H16O");
+		
         Xform moleculeXform = new Xform();
         int sum=moles.size();
         LinkedList<Xform> moleXforms=new LinkedList<Xform>();//装碳氢原子的form

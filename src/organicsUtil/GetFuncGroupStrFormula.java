@@ -39,8 +39,8 @@ public class GetFuncGroupStrFormula {
 		if(funcGroup.equals(FuncGroupType.CHO)) {
 			int sequenceC=1;
 			int sequenceO=1;
-			list.add("c"+(sequenceC)+" o"+(sequenceO)+" "+BondType.CO120DoubleBond);
-			list.add("c"+(sequenceC)+" h1 "+BondType.CH120SingleBond);
+			list.add("C"+(sequenceC)+" O"+(sequenceO)+" "+BondType.CO120DoubleBond);
+			list.add("C"+(sequenceC)+" H1 "+BondType.CH120SingleBond);
 		}
 		//羧基
 		if(funcGroup.equals(FuncGroupType.COOH)) {

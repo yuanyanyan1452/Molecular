@@ -21,19 +21,21 @@ public class ServiceController {
 	public static LinkedList<Mole>  serviceDispatcher(String moleFormula) {
 		LinkedList<Mole> moles=new LinkedList<Mole>();
 		LinkedList<Mole> temp=new LinkedList<Mole>();
+		double offset=0;//多种有机物时的横向偏移距离
 		if(moleFormula.matches("[Cc]([1-9]{1}[0-9]{0,})?[Hh]([1-9]{1}[0-9]{0,})?")) {
 			HydrocarbonService hydrocarbonService=new HydrocarbonService();
 			temp=hydrocarbonService.transformMoleFormula(moleFormula);
 			if(!temp.isEmpty()) {
 				moles.addAll(temp);
+				offset+=500;
 			}
 		}else if(matchHalohydrocarbon(moleFormula)) {
 		}else if(moleFormula.matches("[Cc]([1-9]{1}[0-9]{0,})?[Hh]([1-9]{1}[0-9]{0,})?[Oo]([1-9]{1}[0-9]{0,})?")) {
-			
 			//醛
 			CHOService choService=new CHOService();
 			temp=choService.transformMoleFormula(moleFormula);
 			if(!temp.isEmpty()) {
+				offsetService(offset,temp);
 				moles.addAll(temp);
 			}
 			/*
@@ -91,6 +93,12 @@ public class ServiceController {
 			}
 		}
 		return false;
+	}
+	public static void offsetService(double offset,LinkedList<Mole> moles) {
+		if(offset==0)return;
+		for(Mole m:moles) {
+			m.setX(m.x+offset);
+		}
 	}
 }
 ;

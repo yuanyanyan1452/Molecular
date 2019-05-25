@@ -10,8 +10,9 @@ public class BaseTest {
 	 */
 		//debug entrance
 		public static void main(String[] args) {
-			String[] input= {"C9H12"};
+			String[] input= {"CH2O"};
 			for(String str:input) {
+				
 				//有机物存在哪些原子及它们的坐标
 				LinkedList<Mole> moles=ServiceController.serviceDispatcher(str);
 				for(int i=0;i<moles.size();i++) {
