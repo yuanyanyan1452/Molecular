@@ -26,7 +26,7 @@ public class TestCoordinateTest extends Application {
     final Xform cameraXform = new Xform();
     final Xform cameraXform2 = new Xform();
     final Xform cameraXform3 = new Xform();
-    private static final double CAMERA_INITIAL_DISTANCE = -2000;//设置的大一点，camera就远一点，看到的视图就大一点
+    private static final double CAMERA_INITIAL_DISTANCE = -3000;//设置的大一点，camera就远一点，看到的视图就大一点
     private static final double CAMERA_INITIAL_X_ANGLE = 0;
     private static final double CAMERA_INITIAL_Y_ANGLE = 0;
     private static final double CAMERA_NEAR_CLIP = 0.1;
@@ -168,7 +168,7 @@ public class TestCoordinateTest extends Application {
         final PhongMaterial yellowMaterial = new PhongMaterial();
         greyMaterial.setDiffuseColor(Color.BLANCHEDALMOND);
         
-		LinkedList<Mole> moles=ServiceController.serviceDispatcher("C2H6");
+		LinkedList<Mole> moles=ServiceController.serviceDispatcher("C15H24");
         Xform moleculeXform = new Xform();
         int sum=moles.size();
         LinkedList<Xform> moleXforms=new LinkedList<Xform>();//装碳氢原子的form

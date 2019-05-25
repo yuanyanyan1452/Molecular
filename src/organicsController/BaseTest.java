@@ -10,16 +10,20 @@ public class BaseTest {
 	 */
 		//debug entrance
 		public static void main(String[] args) {
-			String[] input= {"C3H6O"};
+			String[] input= {"C9H12"};
 			for(String str:input) {
-				LinkedList<String> bonds=organicsService.ServiceController.serviceDispatcher(str);
+				//有机物存在哪些原子及它们的坐标
 				LinkedList<Mole> moles=ServiceController.serviceDispatcher(str);
 				for(int i=0;i<moles.size();i++) {
 					System.out.println(moles.get(i).toString());
 				}
+				
+				//有机物哪些原子之间相连，即化学键
+				LinkedList<String> bonds=organicsService.ServiceController.serviceDispatcher(str);
 				for(int i=0;i<bonds.size();i++) {
 					System.out.println(bonds.get(i));
 				}
+				
 			}
 		}
 }

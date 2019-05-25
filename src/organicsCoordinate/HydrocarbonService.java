@@ -70,15 +70,80 @@ public class HydrocarbonService implements TransformService{
 				}
 			}
 		}else if(cNumber*2==hNumber) {//一烯烃 
+			moles.addAll(HydroSampleService.hydroSampleService(cNumber-1,cNumber,hNumber));
+			if((cNumber-1)%2==1) {
+				Mole temp=moles.get(cNumber-1-1);
+				moles.add(new Mole("C1",temp.x-Counter.sin(tetra-60)*BondLen.CCDouLen,0,temp.z-Counter.cos(tetra-60)*BondLen.CCDouLen));
+				moles.add(new Mole("H3",temp.x-Counter.sin(120-tetra)*BondLen.CHSinLen,0,temp.z+Counter.cos(120-tetra)*BondLen.CHSinLen));
+				temp=moles.get(moles.size()-2);
+				moles.add(new Mole("H2",temp.x-Counter.sin(180-tetra)*BondLen.CHSinLen,0,temp.z+Counter.cos(180-tetra)*BondLen.CHSinLen));
+				moles.add(new Mole("H1",temp.x+Counter.sin(120-tetra)*BondLen.CHSinLen,0,temp.z-Counter.cos(120-tetra)*BondLen.CHSinLen));
+			}else {
+				Mole temp=moles.get(cNumber-1-1);
+				moles.add(new Mole("C1",temp.x-Math.sqrt(3)/2*BondLen.CCDouLen,0,temp.z+BondLen.CCDouLen/2));
+				moles.add(new Mole("H3",temp.x+Math.sqrt(3)/2*BondLen.CHSinLen,0,temp.z+BondLen.CHSinLen/2));
+				temp=moles.get(moles.size()-1-1);
+				moles.add(new Mole("H2",temp.x,0,temp.z+BondLen.CHSinLen));
+				moles.add(new Mole("H1",temp.x-Math.sqrt(3)/2*BondLen.CHSinLen,0,temp.z-BondLen.CHSinLen/2));
+			}
 		}else if((cNumber*2-2)==hNumber) {//一炔烃
+			moles.addAll(HydroSampleService.hydroSampleService(cNumber-1, cNumber, hNumber));
+			if((cNumber-1)%2==1) {
+				Mole temp=moles.get(cNumber-1-1);
+				moles.add(new Mole("C1",temp.x-BondLen.CCTriLen*Counter.sin(180-tetra),0,temp.z+BondLen.CCTriLen*Counter.cos(180-tetra)));
+				temp=moles.get(moles.size()-1);
+				moles.add(new Mole("H1",temp.x-BondLen.CHSinLen*Counter.sin(180-tetra),0,temp.z+BondLen.CHSinLen*Counter.cos(180-tetra)));
+			}else {
+				Mole temp=moles.get(cNumber-1-1);
+				moles.add(new Mole("C1",temp.x,0,temp.z+BondLen.CCTriLen));
+				temp=moles.get(moles.size()-1);
+				moles.add(new Mole("H1",temp.x,0,temp.z+BondLen.CHSinLen));
+			}
 		}else if((cNumber*2-6)==hNumber&&cNumber>=6) {
+			moles.addAll(HydroSampleService.hydroSampleService(cNumber-5, cNumber, hNumber));
+			if((cNumber-5)%2==1) {
+				Mole temp=moles.get(cNumber-5-1);//C6
+				moles.add(new Mole("C5",temp.x-Counter.sin(tetra-60)*BondLen.CCDouLen,0,temp.z-Counter.cos(tetra-60)*BondLen.CCDouLen));
+				moles.add(new Mole("C1",temp.x-Counter.sin(120-tetra)*BondLen.CCSinLen,0,temp.z+Counter.cos(120-tetra)*BondLen.CCSinLen));
+				temp=moles.get(moles.size()-1-1);//C5
+				moles.add(new Mole("C4",temp.x-Counter.sin(180-tetra)*BondLen.CCSinLen,0,temp.z+Counter.cos(180-tetra)*BondLen.CCSinLen));
+				moles.add(new Mole("H5",temp.x+Counter.sin(120-tetra)*BondLen.CHSinLen,0,temp.z-Counter.cos(120-tetra)*BondLen.CHSinLen));
+				temp=moles.get(moles.size()-1-1);//C4
+				moles.add(new Mole("C3",temp.x-Counter.sin(120-tetra)*BondLen.CCDouLen,0,temp.z+Counter.cos(120-tetra)*BondLen.CCDouLen));
+				moles.add(new Mole("H4",temp.x-Counter.sin(tetra-60)*BondLen.CHSinLen,0,temp.z-Counter.cos(tetra-60)*BondLen.CHSinLen));
+				temp=moles.get(moles.size()-1-1);//C3
+				moles.add(new Mole("C2",temp.x+BondLen.CCSinLen*Counter.sin(tetra-60),0,temp.z+BondLen.CCSinLen*Counter.cos(tetra-60)));
+				moles.add(new Mole("H3",temp.x-BondLen.CHSinLen*Counter.sin(180-tetra),0,temp.z+BondLen.CHSinLen*Counter.cos(180-tetra)));
+				temp=moles.get(moles.size()-1-1);//C2
+				moles.add(new Mole("H2",temp.x-BondLen.CHSinLen*Counter.sin(120-tetra),0,temp.z+BondLen.CHSinLen*Counter.cos(120-tetra)));
+				double x=BondLen.CCSinLen*Counter.sin(120-tetra)-BondLen.CHSinLen*Counter.sin(tetra-60);
+				double z=BondLen.CCSinLen*Counter.cos(120-tetra)+BondLen.CHSinLen*Counter.cos(tetra-60);
+				moles.add(new Mole("H1",-x,0,z));
+			}else {
+				Mole temp=moles.get(cNumber-5-1);//C6
+				moles.add(new Mole("C5",temp.x-Math.sqrt(3)/2*BondLen.CCDouLen,0,temp.z+BondLen.CCDouLen/2));
+				moles.add(new Mole("C1",temp.x+Math.sqrt(3)/2*BondLen.CHSinLen,0,temp.z+BondLen.CHSinLen/2));
+				temp=moles.get(moles.size()-1);//C1
+				Mole temp2=moles.get(moles.size()-1-1);//C5
+				moles.add(new Mole("H1",temp.x+BondLen.CHSinLen/2,0,temp.z-BondLen.CHSinLen/2*Math.sqrt(3)));
+				moles.add(new Mole("C4",temp2.x,0,temp2.z+BondLen.CCSinLen));
+				moles.add(new Mole("H5",temp2.x-BondLen.CHSinLen/2*Math.sqrt(3),0,temp2.z-BondLen.CHSinLen/2));
+				temp=moles.get(moles.size()-1-1);//C4
+				moles.add(new Mole("C3",temp.x+BondLen.CCDouLen/2*Math.sqrt(3),0,temp.z+BondLen.CCDouLen/2));
+				moles.add(new Mole("H4",temp.x-BondLen.CHSinLen/2*Math.sqrt(3),0,temp.z+BondLen.CHSinLen/2));
+				temp=moles.get(moles.size()-1-1);//C3
+				moles.add(new Mole("C2",temp.x+BondLen.CCSinLen/2*Math.sqrt(3),0,temp.z-BondLen.CCSinLen/2));
+				moles.add(new Mole("H3",temp.x,0,temp.z+BondLen.CHSinLen));
+				temp=moles.get(moles.size()-1-1);//C2
+				moles.add(new Mole("H2",temp.x+BondLen.CHSinLen/2*Math.sqrt(3),0,temp.z+BondLen.CHSinLen/2));
+			}
 		}
 		return moles;
 	}
 	//test
 	public static void main(String[] args) {
 		HydrocarbonService h=new HydrocarbonService();
-		LinkedList<Mole> moles=h.transformMoleFormula("CH4");
+		LinkedList<Mole> moles=h.transformMoleFormula("C2H2");
 		for(int i=0;i<moles.size();i++)System.out.println(moles.get(i).toString());
 	}
 }
