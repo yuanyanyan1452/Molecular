@@ -2,9 +2,9 @@ package organicsController;
 
 import java.util.regex.Pattern;
 
-import organicsCoordinate.CHOService;
-import organicsCoordinate.HydrocarbonService;
-import organicsService.HalohydrocarbonService;
+import organicsBondService.HalohydrocarbonService;
+import organicsCoordinateService.CHOService;
+import organicsCoordinateService.HydrocarbonService;
 import organicsUtil.HaloType;
 import organicsUtil.Mole;
 

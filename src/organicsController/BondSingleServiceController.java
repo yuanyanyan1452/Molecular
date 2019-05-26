@@ -2,90 +2,72 @@ package organicsController;
 
 import java.util.regex.Pattern;
 
-import organicsService.CHOService;
-import organicsService.COCService;
-import organicsService.COOHService;
-import organicsService.COOService;
-import organicsService.COService;
-import organicsService.HalohydrocarbonService;
-import organicsService.HydrocarbonService;
-import organicsService.LifeBasicService;
-import organicsService.OHService;
+import organicsBondService.CHOService;
+import organicsBondService.COCService;
+import organicsBondService.COOHService;
+import organicsBondService.COOService;
+import organicsBondService.COService;
+import organicsBondService.HalohydrocarbonService;
+import organicsBondService.HydrocarbonService;
+import organicsBondService.LifeBasicService;
+import organicsBondService.OHService;
 import organicsUtil.HaloType;
+import organicsUtil.MoleProperty;
 
 import java.util.regex.Matcher;
 import java.util.LinkedList;
 public class BondSingleServiceController {
- /*
- * 根据分子式判断调用哪一个具体的service
- * 具体的service如下：
- * HydrocarbonService：只含碳氢的
- * HalohydrocarbonService：卤代烃
- * 应做的优化：应将有机物名称的添加放到每一个具体的service中来做
- */
 	private static HaloType haloType;
-	public static LinkedList<String>  serviceDispatcher(String moleFormula) {
+	public static LinkedList<String>  serviceDispatcher(String moleName,String inputType) {
 		LinkedList<String> bonds=new LinkedList<String>();
-		LinkedList<String> temp=new LinkedList<String>();
-		if(moleFormula.matches("[Cc]([1-9]{1}[0-9]{0,})?[Hh]([1-9]{1}[0-9]{0,})?")) {
-			HydrocarbonService hydrocarbonService=new HydrocarbonService();
-			bonds=hydrocarbonService.transformMoleFormula(moleFormula);
-		}else if(matchHalohydrocarbon(moleFormula)) {
-			bonds=HalohydrocarbonService.transformMoleFormula(moleFormula,haloType);
-		}else if(moleFormula.matches("[Cc]([1-9]{1}[0-9]{0,})?[Hh]([1-9]{1}[0-9]{0,})?[Oo]([1-9]{1}[0-9]{0,})?")) {
-			//醇
-			OHService oHService=new OHService();
-			temp=oHService.transformMoleFormula(moleFormula);
-			if(!temp.isEmpty()) {
-				bonds.addAll(temp);
-			}
-			//醛
-			CHOService choService=new CHOService();
-			temp=choService.transformMoleFormula(moleFormula);
-			if(!temp.isEmpty()) {
-				bonds.addAll(temp);
-			}
-			//酮
-			COService coService=new COService();
-			temp=coService.transformMoleFormula(moleFormula);
-			if(!temp.isEmpty()) {
-				bonds.addAll(temp);
-			}
-			//酸
-			COOHService coohService=new COOHService();
-			temp=coohService.transformMoleFormula(moleFormula);
-			if(!temp.isEmpty()) {
-				bonds.addAll(temp);
-			}
-			//醚
-			COCService cocService=new COCService();
-			temp=cocService.transformMoleFormula(moleFormula);
-			if(!temp.isEmpty()) {
-				bonds.addAll(temp);
-			}
-			//酯
-			COOService cooService=new COOService();
-			temp=cooService.transformMoleFormula(moleFormula);
-			if(!temp.isEmpty()) {
-				bonds.addAll(temp);
+		if(inputType.equals("按分子式")) {
+			if(moleName.matches("[Cc]([1-9]{1}[0-9]{0,})?[Hh]([1-9]{1}[0-9]{0,})?")) {//烃
+				HydrocarbonService hydrocarbonService=new HydrocarbonService();
+				bonds=hydrocarbonService.transformMoleFormula(moleName);
+				if(!bonds.isEmpty())return bonds;
+			}else if(matchHalohydrocarbon(moleName)) {//卤代烃
+				bonds=HalohydrocarbonService.transformMoleFormula(moleName,haloType);
+				if(!bonds.isEmpty())return bonds;
+			}else if(moleName.matches("[Cc]([1-9]{1}[0-9]{0,})?[Hh]([1-9]{1}[0-9]{0,})?[Oo]([1-9]{1}[0-9]{0,})?")) {
+				//醇
+				OHService oHService=new OHService();
+				bonds=oHService.transformMoleFormula(moleName);
+				if(!bonds.isEmpty()) return bonds;
+				//醛
+				CHOService choService=new CHOService();
+				bonds=choService.transformMoleFormula(moleName);
+				if(!bonds.isEmpty())return bonds;
+				//酮
+				COService coService=new COService();
+				bonds=coService.transformMoleFormula(moleName);
+				if(!bonds.isEmpty())return bonds;
+				//酸
+				COOHService coohService=new COOHService();
+				bonds=coohService.transformMoleFormula(moleName);
+				if(!bonds.isEmpty())return bonds;
+				//醚
+				COCService cocService=new COCService();
+				bonds=cocService.transformMoleFormula(moleName);
+				if(!bonds.isEmpty())return bonds;
+				//酯
+				COOService cooService=new COOService();
+				bonds=cooService.transformMoleFormula(moleName);
+				if(!bonds.isEmpty())return bonds;
 			}
 		}else {//按照有机物名称来解析
 			LifeBasicService lifeBasicService=new LifeBasicService();
-			temp=lifeBasicService.transformMoleFormula(moleFormula);
-			if(!temp.isEmpty()) {
-				bonds.add("#"+moleFormula);
-				bonds.addAll(temp);
-			}
+			bonds=lifeBasicService.transformMoleFormula(moleName);
+			if(!bonds.isEmpty())return bonds;
 		}
 		return bonds;
 	}
 	//和卤代烃匹配
-	private static boolean matchHalohydrocarbon(String moleFormula) {
+	private static boolean matchHalohydrocarbon(String moleName) {
 		Pattern pattern=Pattern.compile("[Cc]([1-9]{1}[0-9]{0,})?[Hh]([1-9]{1}[0-9]{0,})?");
-		Matcher matcher=pattern.matcher(moleFormula);
+		Matcher matcher=pattern.matcher(moleName);
 		if(matcher.lookingAt()) {
 			int i=matcher.end();
-			String x=moleFormula.substring(i,i+1);
+			String x=moleName.substring(i,i+1);
 			if(x.equals("F")||x.equals("f")) {
 				haloType=HaloType.F;
 				return true;
@@ -93,8 +75,8 @@ public class BondSingleServiceController {
 				haloType=HaloType.I;
 				return true;
 			}
-			if(moleFormula.length()>i+1) {
-				x=moleFormula.substring(i,i+2);
+			if(moleName.length()>i+1) {
+				x=moleName.substring(i,i+2);
 				if(x.equals("Cl")||x.equals("cl")||x.equals("CL")||x.equals("cL")) {
 					haloType=HaloType.Cl;
 					return true;
@@ -106,5 +88,11 @@ public class BondSingleServiceController {
 		}
 		return false;
 	}
+	
+	//判断是否是中学化学常见有机物
+	public static boolean checkRange(String moleName) {
+		if(MoleProperty.nameByLocalName.containsKey(moleName))return true;
+		if(BondSingleServiceController.serviceDispatcher(moleName, "按分子式").isEmpty())return false;
+		else return true;
+	}
 }
-;

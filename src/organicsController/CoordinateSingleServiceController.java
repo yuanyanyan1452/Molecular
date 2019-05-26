@@ -2,8 +2,15 @@ package organicsController;
 
 import java.util.regex.Pattern;
 
-import organicsCoordinate.CHOService;
-import organicsCoordinate.HydrocarbonService;
+import organicsCoordinateService.COCService;
+import organicsCoordinateService.COService;
+import organicsCoordinateService.HalohydrocarbonService;
+import organicsCoordinateService.CHOService;
+import organicsCoordinateService.COOHService;
+import organicsCoordinateService.COOService;
+import organicsCoordinateService.HydrocarbonService;
+import organicsCoordinateService.LifeBasicService;
+import organicsCoordinateService.OHService;
 import organicsUtil.HaloType;
 import organicsUtil.Mole;
 
@@ -14,55 +21,51 @@ public class CoordinateSingleServiceController {
 	private static HaloType haloType;
 	public static LinkedList<Mole>  serviceDispatcher(String moleName,String inputType) {
 		LinkedList<Mole> moles=new LinkedList<Mole>();
-		LinkedList<Mole> temp=new LinkedList<Mole>();
 		if(inputType.equals("按分子式")) {
 			if(moleName.matches("[Cc]([1-9]{1}[0-9]{0,})?[Hh]([1-9]{1}[0-9]{0,})?")) {
 				HydrocarbonService hydrocarbonService=new HydrocarbonService();
-				temp=hydrocarbonService.transformMoleFormula(moleName);
-				if(!temp.isEmpty()) {
-					moles.addAll(temp);
-					return moles;
-				}
+				moles=hydrocarbonService.transformMoleFormula(moleName);
+				if(!moles.isEmpty()) return moles;
 			}else if(matchHalohydrocarbon(moleName)) {
+				moles=HalohydrocarbonService.transformMoleFormula(moleName, haloType);
+				if(!moles.isEmpty()) return moles;
 			}else if(moleName.matches("[Cc]([1-9]{1}[0-9]{0,})?[Hh]([1-9]{1}[0-9]{0,})?[Oo]([1-9]{1}[0-9]{0,})?")) {
 				//醛
 				CHOService choService=new CHOService();
-				temp=choService.transformMoleFormula(moleName);
-				if(!temp.isEmpty()) {
-					moles.addAll(temp);
-					return moles;
-				}
+				moles=choService.transformMoleFormula(moleName);
+				if(!moles.isEmpty()) return moles;
+
 				//醇
-				if(!temp.isEmpty()) {
-					moles.addAll(temp);
-					return moles;
-				}
+				OHService ohService=new OHService();
+				moles=ohService.transformMoleFormula(moleName);
+				if(!moles.isEmpty()) return moles;
+
 				//酮
-				if(!temp.isEmpty()) {
-					moles.addAll(temp);
-					return moles;
-				}
+				COService coService=new COService();
+				moles=coService.transformMoleFormula(moleName);
+				if(!moles.isEmpty()) return moles;
+
 				//酸
-				if(!temp.isEmpty()) {
-					moles.addAll(temp);
-					return moles;
-				}
+				COOHService coohService=new COOHService();
+				moles=coohService.transformMoleFormula(moleName);
+				if(!moles.isEmpty()) return moles;
+
 				//醚
-				if(!temp.isEmpty()) {
-					moles.addAll(temp);
-					return moles;
-				}
+				COCService cocService=new COCService();
+				moles=cocService.transformMoleFormula(moleName);
+				if(!moles.isEmpty()) return moles;
+
 				//酯
-				if(!temp.isEmpty()) {
-					moles.addAll(temp);
-					return moles;
-				}
+				COOService cooService=new COOService();
+				moles=cooService.transformMoleFormula(moleName);
+				if(!moles.isEmpty()) return moles;
+
 			}
 		}else if(inputType.equals("按中文名")){//按照有机物名称来解析
-			if(!temp.isEmpty()) {
-				moles.addAll(temp);
-				return moles;
-			}
+			LifeBasicService lifeBasicService=new LifeBasicService();
+			moles=lifeBasicService.transformMoleFormula(moleName);
+			if(!moles.isEmpty()) return moles;
+
 		}
 		return moles;
 	}

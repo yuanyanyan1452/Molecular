@@ -42,7 +42,11 @@ public class Mole {
 			if(temp>=48&&temp<=57) {
 				String s=name.substring(0, i).toUpperCase();
 				this.type=s;
-				this.size=MoleProperty.sizeByType.get(s);
+				if(MoleProperty.sizeByType.containsKey(s)) {
+					this.size=MoleProperty.sizeByType.get(s);
+				}else {//虚拟原子（例如中心对称点原子）
+					this.size=0;
+				}
 				break;
 			}
 		}

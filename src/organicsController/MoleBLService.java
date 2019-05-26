@@ -13,12 +13,10 @@ public class MoleBLService {
 	 }
 	 //获取有机物的所有化学键
 	 public LinkedList<String> getBonds(String moleName,String inputType){
-		 LinkedList<String> res=new LinkedList<String>();
-		 return res;
+		 return BondSingleServiceController.serviceDispatcher(moleName, inputType);
 	 }
 	 //是否在中学化学范围内
 	 public boolean checkRange(String moleName) {
-		 Boolean res=true;
-		 return res;
+		 return BondSingleServiceController.checkRange(moleName);
 	 }
 }

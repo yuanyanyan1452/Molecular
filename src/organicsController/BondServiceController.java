@@ -2,15 +2,15 @@ package organicsController;
 
 import java.util.regex.Pattern;
 
-import organicsService.CHOService;
-import organicsService.COCService;
-import organicsService.COOHService;
-import organicsService.COOService;
-import organicsService.COService;
-import organicsService.HalohydrocarbonService;
-import organicsService.HydrocarbonService;
-import organicsService.LifeBasicService;
-import organicsService.OHService;
+import organicsBondService.CHOService;
+import organicsBondService.COCService;
+import organicsBondService.COOHService;
+import organicsBondService.COOService;
+import organicsBondService.COService;
+import organicsBondService.HalohydrocarbonService;
+import organicsBondService.HydrocarbonService;
+import organicsBondService.LifeBasicService;
+import organicsBondService.OHService;
 import organicsUtil.HaloType;
 
 import java.util.regex.Matcher;

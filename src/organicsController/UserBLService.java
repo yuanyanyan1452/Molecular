@@ -23,4 +23,8 @@ public class UserBLService {
 	public boolean saveMolecule(String moleName,String name) {
 		return UserTransaction.saveMolecule(moleName, name);
 	}
+	//添加搜索记录
+	public static boolean addSearchRecord(String moleName,String name) {
+		return UserTransaction.addSearchRecord(moleName, name);
+	}
 }
