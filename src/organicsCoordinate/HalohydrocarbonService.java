@@ -6,9 +6,9 @@ import organicsUtil.BondType;
 import organicsUtil.FuncGroupType;
 import organicsUtil.GetFuncGroupStrFormula;
 import organicsUtil.HaloType;
-import java.util.LinkedList;
+import organicsUtil.InputMoleFormula;
 
-import organicsController.InputMoleFormula;
+import java.util.LinkedList;
 /*
  * 卤代烃
  * 烃中的氢原子被F、Cl、Br、I替代即氟氯溴碘代烃

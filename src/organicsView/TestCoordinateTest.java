@@ -6,7 +6,7 @@ import javafx.application.Application;
 import javafx.scene.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import organicsController.ServiceController;
+import organicsController.CoordinateServiceController;
 import organicsUtil.Mole;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
@@ -168,7 +168,7 @@ public class TestCoordinateTest extends Application {
         final PhongMaterial yellowMaterial = new PhongMaterial();
         greyMaterial.setDiffuseColor(Color.BLANCHEDALMOND);
         
-		LinkedList<Mole> moles=ServiceController.serviceDispatcher("C8H16O");
+		LinkedList<Mole> moles=CoordinateServiceController.serviceDispatcher("C8H16O");
 		
         Xform moleculeXform = new Xform();
         int sum=moles.size();

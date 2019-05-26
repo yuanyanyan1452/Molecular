@@ -3,6 +3,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.Statement;
+//抽象数据库处理
 public class DBUtil{
 	private static final String url="jdbc:mysql://localhost:3306/Organics3D";
 	private static final String user="root";
@@ -65,6 +66,20 @@ public class DBUtil{
 		}catch(Exception e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+	//更新某条记录的某个字段
+	public static boolean updateField(String sql) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection(url, user, password);
+			Statement s=con.createStatement();
+			if(s.executeUpdate(sql)!=0) {
+				return true;
+			}else return false;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 	

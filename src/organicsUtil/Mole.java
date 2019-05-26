@@ -37,27 +37,14 @@ public class Mole {
 		return this.type+" "+this.size+" "+this.name+" "+this.x+" "+this.y+" "+this.z;
 	}
 	public void init(String name) {
-		if(name.startsWith("CL")||name.startsWith("cl")) {
-			this.type="CL";
-			this.size=9.9;
-		}else if(name.startsWith("H")||name.startsWith("h")) {
-			this.type="H";
-			this.size=3.7;
-		}else if(name.startsWith("O")||name.startsWith("o")) {
-			this.type="O";
-			this.size=7.4;
-		}else if(name.startsWith("F")||name.startsWith("f")) {
-			this.type="F";
-			this.size=7.1;
-		}else if(name.startsWith("C")||name.startsWith("c")) {
-			this.type="C";
-			this.size=7.7;
-		}else if(name.startsWith("BR")||name.startsWith("br")){
-			this.type="BR";
-			this.size=19.6;//溴原子呈-1价时的原子半径
-		}else if(name.startsWith("I")||name.startsWith("i")) {
-			this.type="I";
-			this.size=14;
+		for(int i=0;i<name.length();i++) {
+			char temp=name.charAt(i);
+			if(temp>=48&&temp<=57) {
+				String s=name.substring(0, i).toUpperCase();
+				this.type=s;
+				this.size=MoleProperty.sizeByType.get(s);
+				break;
+			}
 		}
 	}
 }

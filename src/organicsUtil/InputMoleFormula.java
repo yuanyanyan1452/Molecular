@@ -1,4 +1,4 @@
-package organicsController;
+package organicsUtil;
 import java.util.Scanner;
 import java.util.LinkedList;
 public class InputMoleFormula {

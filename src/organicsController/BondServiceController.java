@@ -1,19 +1,21 @@
-package organicsService;
+package organicsController;
 
 import java.util.regex.Pattern;
 
+import organicsService.CHOService;
+import organicsService.COCService;
+import organicsService.COOHService;
+import organicsService.COOService;
+import organicsService.COService;
+import organicsService.HalohydrocarbonService;
+import organicsService.HydrocarbonService;
+import organicsService.LifeBasicService;
+import organicsService.OHService;
 import organicsUtil.HaloType;
 
 import java.util.regex.Matcher;
 import java.util.LinkedList;
-public class ServiceController {
- /*
- * 根据分子式判断调用哪一个具体的service
- * 具体的service如下：
- * HydrocarbonService：只含碳氢的
- * HalohydrocarbonService：卤代烃
- * 应做的优化：应将有机物名称的添加放到每一个具体的service中来做
- */
+public class BondServiceController {
 	private static HaloType haloType;
 	public static LinkedList<String>  serviceDispatcher(String moleFormula) {
 		LinkedList<String> bonds=new LinkedList<String>();

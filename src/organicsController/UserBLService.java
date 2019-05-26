@@ -2,13 +2,14 @@ package organicsController;
 import java.util.LinkedList;
 
 import organicsModel.UserTransaction;
+//对外显示的用户相关的业务逻辑接口
 public class UserBLService {
 	
-	//register
+	//注册
 	public boolean register(String name,String password){
 		return UserTransaction.registerUser(name, password);
 	}
-	//login
+	//登陆
 	public boolean login(String name,String password) {
 		return UserTransaction.loginUser(name, password);
 	}
@@ -18,16 +19,8 @@ public class UserBLService {
 		return UserTransaction.getRearchRecord(name);
 	}
 	
-	//存储原子分子式
-	public boolean saveMolecule(String molename) {
-		return true;
+	//存储原子分子式（添加了名字属性）
+	public boolean saveMolecule(String moleName,String name) {
+		return UserTransaction.saveMolecule(moleName, name);
 	}
-	
-	//test
-	public static void main(String[] args){
-		UserBLService userBLService=new UserBLService();
-		LinkedList<String> res=userBLService.getResearchRecord("suwan");
-		for(String s:res)System.out.println(s);
-	}
-	
 }

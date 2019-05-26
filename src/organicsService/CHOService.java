@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import organicsUtil.BondType;
 import organicsUtil.FuncGroupType;
 import organicsUtil.GetFuncGroupStrFormula;
+import organicsUtil.InputMoleFormula;
 /*
  * 一元醛
  * 二元醛

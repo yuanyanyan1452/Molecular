@@ -2,9 +2,9 @@ package organicsCoordinate;
 
 import java.util.LinkedList;
 
-import organicsController.InputMoleFormula;
 import organicsUtil.BondLen;
 import organicsUtil.Counter;
+import organicsUtil.InputMoleFormula;
 import organicsUtil.Mole;
 
 /*

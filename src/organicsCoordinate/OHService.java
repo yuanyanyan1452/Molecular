@@ -1,12 +1,10 @@
 package organicsCoordinate;
 import java.util.LinkedList;
-
-import organicsController.InputMoleFormula;
-
 import java.util.HashMap;
 import organicsUtil.BondType;
 import organicsUtil.FuncGroupType;
 import organicsUtil.GetFuncGroupStrFormula;
+import organicsUtil.InputMoleFormula;
 import organicsUtil.Mole;
 
 public class OHService implements TransformService {

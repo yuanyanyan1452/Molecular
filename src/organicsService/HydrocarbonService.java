@@ -4,6 +4,7 @@ import java.util.HashMap;
 import organicsUtil.BondType;
 import organicsUtil.FuncGroupType;
 import organicsUtil.GetFuncGroupStrFormula;
+import organicsUtil.InputMoleFormula;
 /*
  * 只含碳氢的化合物，或者简称为烃
  * 分为烷烃烯烃炔烃芳香烃

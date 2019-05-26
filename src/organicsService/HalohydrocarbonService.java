@@ -6,6 +6,8 @@ import organicsUtil.BondType;
 import organicsUtil.FuncGroupType;
 import organicsUtil.GetFuncGroupStrFormula;
 import organicsUtil.HaloType;
+import organicsUtil.InputMoleFormula;
+
 import java.util.LinkedList;
 /*
  * 卤代烃

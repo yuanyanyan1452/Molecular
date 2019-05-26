@@ -4,6 +4,7 @@ import java.util.HashMap;
 import organicsUtil.BondType;
 import organicsUtil.FuncGroupType;
 import organicsUtil.GetFuncGroupStrFormula;
+import organicsUtil.InputMoleFormula;
 
 public class OHService implements TransformService {
 	public LinkedList<String> transformMoleFormula(String moleFormula) {
