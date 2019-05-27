@@ -46,9 +46,9 @@ public class GetFuncGroupStrFormula {
 		if(funcGroup.equals(FuncGroupType.COOH)) {
 			int sequenceC=1;
 			int sequenceO=1;
-			list.add("c"+(sequenceC)+" o"+(sequenceO)+" "+BondType.CO120DoubleBond);
-			list.add("c"+(sequenceC)+" o"+(++sequenceO)+" "+BondType.COTeSingleBond);
-			list.add("o"+(sequenceO)+" H "+BondType.OH90Bond);
+			list.add("C"+(sequenceC)+" O"+(sequenceO)+" "+BondType.CO120DoubleBond);
+			list.add("C"+(sequenceC)+" O"+(++sequenceO)+" "+BondType.COTeSingleBond);
+			list.add("O"+(sequenceO)+" H1 "+BondType.OH90Bond);
 		}
 		//双醛基
 		if(funcGroup.equals(FuncGroupType.CHO2)) {

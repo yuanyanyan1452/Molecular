@@ -43,7 +43,7 @@ public class OHService implements TransformService {
 					map.put(i, map.get(i)-1);
 				}
 			}
-		}else if(cNumber*2==hNumber&&oNumber==1&&cNumber>=2) {//不饱和度为1的醇
+		}else if(cNumber*2==hNumber&&oNumber==1&&cNumber>=2&&oNumber==1) {//不饱和度为1的醇
 			bonds.add("#一元醇");
 			for(int i=1;i<=cNumber-1;i++) {
 				if(i==1)bonds.add("C1 C2 "+BondType.CC120DoubleBond);
@@ -60,7 +60,7 @@ public class OHService implements TransformService {
 			}
 			//分配氢键和羟基
 			bonds.addAll(dispatcherHO(map,cNumber,hNumber));
-		}else if((cNumber*2-2)==hNumber) {//炔
+		}else if((cNumber*2-2)==hNumber&&oNumber==1) {//炔
 			bonds.add("#一元醇");
 			for(int i=1;i<=cNumber-1;i++) {
 				if(i==1)bonds.add("C"+i+" C"+(i+1)+" "+BondType.CC180TripleBond);

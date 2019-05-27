@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import organicsUtil.Mole;
 public class BaseTest {
 		public static void main(String[] args) {
-			String[] input= {"C3H4O"};
+			String[] input= {"C4H6O2"};
 			String inputType="按分子式";
 			MoleBLService ms=new MoleBLService();
 			for(String str:input) {

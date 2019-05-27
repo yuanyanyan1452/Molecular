@@ -29,14 +29,17 @@ public class BondSingleServiceController {
 				bonds=HalohydrocarbonService.transformMoleFormula(moleName,haloType);
 				if(!bonds.isEmpty())return bonds;
 			}else if(moleName.matches("[Cc]([1-9]{1}[0-9]{0,})?[Hh]([1-9]{1}[0-9]{0,})?[Oo]([1-9]{1}[0-9]{0,})?")) {
-				//醇
-				OHService oHService=new OHService();
-				bonds=oHService.transformMoleFormula(moleName);
-				if(!bonds.isEmpty()) return bonds;
+				
 				//醛
 				CHOService choService=new CHOService();
 				bonds=choService.transformMoleFormula(moleName);
 				if(!bonds.isEmpty())return bonds;
+				
+				//醇
+				OHService oHService=new OHService();
+				bonds=oHService.transformMoleFormula(moleName);
+				if(!bonds.isEmpty()) return bonds;
+				
 				//酮
 				COService coService=new COService();
 				bonds=coService.transformMoleFormula(moleName);

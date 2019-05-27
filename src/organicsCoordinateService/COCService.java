@@ -1,5 +1,6 @@
 package organicsCoordinateService;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 import organicsUtil.InputMoleFormula;
@@ -20,7 +21,15 @@ public class COCService implements TransformService{
 		if(oNumber==1&&cNumber>=2) {
 			if((cNumber*2+2)==hNumber) {
 				moles=HydroSampleServiceRight.hydroSampleService(cNumber-1, cNumber, hNumber);
-				
+				HashMap<String,Mole> molesMap=new HashMap<String,Mole>();
+				for(Mole m:moles) {
+					molesMap.put(m.name, m);
+				}
+				if((cNumber-1)%2==0) {
+					
+				}else {
+					
+				}
 			}else if(cNumber*2==hNumber) {
 			}else if((cNumber*2-2)==hNumber) {
 			}
