@@ -1,4 +1,4 @@
-package organicsController;
+			package organicsController;
 
 import java.util.regex.Pattern;
 
@@ -29,12 +29,12 @@ public class BondSingleServiceController {
 				bonds=HalohydrocarbonService.transformMoleFormula(moleName,haloType);
 				if(!bonds.isEmpty())return bonds;
 			}else if(moleName.matches("[Cc]([1-9]{1}[0-9]{0,})?[Hh]([1-9]{1}[0-9]{0,})?[Oo]([1-9]{1}[0-9]{0,})?")) {
-				
+				/*
 				//醛
 				CHOService choService=new CHOService();
 				bonds=choService.transformMoleFormula(moleName);
 				if(!bonds.isEmpty())return bonds;
-				
+				*/
 				//醇
 				OHService oHService=new OHService();
 				bonds=oHService.transformMoleFormula(moleName);
@@ -58,9 +58,56 @@ public class BondSingleServiceController {
 				if(!bonds.isEmpty())return bonds;
 			}
 		}else {//按照有机物名称来解析
-			LifeBasicService lifeBasicService=new LifeBasicService();
-			bonds=lifeBasicService.transformMoleFormula(moleName);
-			if(!bonds.isEmpty())return bonds;
+			if(MoleProperty.nameByLocalName.containsKey(moleName)) {
+				String temp=MoleProperty.nameByLocalName.get(moleName);
+				moleName=temp.split(" ")[0];
+				String type=temp.split(" ")[1];
+				switch(type) {
+					case "醛":
+						CHOService choService=new CHOService();
+						bonds=choService.transformMoleFormula(moleName);
+						if(!bonds.isEmpty())return bonds;
+						break;
+					case "醚":
+						COCService cocService=new COCService();
+						bonds=cocService.transformMoleFormula(moleName);
+						if(!bonds.isEmpty()) return bonds;
+						break;
+					case "酸":
+						COOHService coohService=new COOHService();
+						bonds=coohService.transformMoleFormula(moleName);
+						if(!bonds.isEmpty()) return bonds;
+						break;
+					case "酯":
+						COOService cooService=new COOService();
+						bonds=cooService.transformMoleFormula(moleName);
+						if(!bonds.isEmpty()) return bonds;
+						break;
+					case "酮":
+						COService coService=new COService();
+						bonds=coService.transformMoleFormula(moleName);
+						if(!bonds.isEmpty()) return bonds;
+						break;
+					case "卤代烃":
+						bonds=HalohydrocarbonService.transformMoleFormula(moleName, haloType);
+						if(!bonds.isEmpty()) return bonds;
+						break;
+					case "烃":
+						HydrocarbonService hydrocarbonService=new HydrocarbonService();
+						bonds=hydrocarbonService.transformMoleFormula(moleName);
+						if(!bonds.isEmpty()) return bonds;
+						break;
+					case "醇":
+						OHService ohService=new OHService();
+						bonds=ohService.transformMoleFormula(moleName);
+						if(!bonds.isEmpty()) return bonds;
+						break;
+				}
+			}else {
+				LifeBasicService lifeBasicService=new LifeBasicService();
+				bonds=lifeBasicService.transformMoleFormula(moleName);
+				if(!bonds.isEmpty()) return bonds;
+			}
 		}
 		return bonds;
 	}

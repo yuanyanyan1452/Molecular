@@ -53,21 +53,23 @@ public class COOHService implements TransformService{
 				bonds.add("C"+cNumber+" O2 "+BondType.CO120SingleBond);
 				bonds.add("O2 h1 "+BondType.OH90Bond);
 			}else if((cNumber*2-4)==hNumber) {//连炔烃
-				bonds.add("#一元酸");
-				for(int i=1;i<=cNumber-1;i++) {
-					if(i==1)bonds.add("c"+i+" C"+(i+1)+" "+BondType.CC120SingleBond);
-					else if(i==cNumber-1)bonds.add("C"+i+" C"+(i+1)+" "+BondType.CC180TripleBond);
-					else if(i==cNumber-2)bonds.add("C"+i+" C"+(i+1)+" "+BondType.CC180SingleBond);
-					else bonds.add("C"+i+" C"+(i+1)+" "+BondType.CCTeSingleBond);
+				for(int i=cNumber;i>=2;i--) {
+					if(i==cNumber)bonds.add("C"+i+" C"+(i-1)+" "+BondType.CC120SingleBond);
+					else if(i==2)bonds.add("C"+i+" C"+(i-1)+" "+BondType.CC180TripleBond);
+					else if(i==3)bonds.add("C"+i+" C"+(i-1)+" "+BondType.CC180SingleBond);
+					else bonds.add("C"+i+" C"+(i-1)+" "+BondType.CCTeSingleBond);
 				}
+				int hCount=1;
 				for(int i=1;i<=cNumber;i++) {
-					if(i==cNumber)bonds.add("C"+i+" H "+BondType.CH180SingleBond);
-					else if(i!=1&&i!=cNumber-1) {
-						for(int j=0;j<2;j++)bonds.add("C"+i+" H "+BondType.CHTeSingleBond);
+					if(i==1)bonds.add("C"+i+" H"+(hCount++)+" "+BondType.CH180SingleBond);
+					else if(i!=2&&i!=cNumber) {
+						for(int j=0;j<2;j++)bonds.add("C"+i+" H"+(hCount++)+" "+BondType.CHTeSingleBond);
 					}
 				}
+				bonds.add("C"+cNumber+" O1 "+BondType.CO120DoubleBond);
+				bonds.add("C"+cNumber+" O2 "+BondType.CO120SingleBond);
+				bonds.add("O2 h1 "+BondType.OH90Bond);
 			}else if((cNumber*2-8)==hNumber&&cNumber>=7) {//连苯环
-				bonds.add("#一元酸");
 				bonds.clear();
 				bonds.addAll(GetFuncGroupStrFormula.getFuncGroupStrFormula(FuncGroupType.BenzeneRing));
 				for(int i=6;i<=cNumber-1;i++) {
@@ -76,11 +78,12 @@ public class COOHService implements TransformService{
 				}
 				bonds.add("C"+cNumber+" O1 "+BondType.CO120DoubleBond);
 				bonds.add("C"+cNumber+" O2 "+BondType.CO120SingleBond);
-				bonds.add("O2 H "+BondType.OH90Bond);
+				bonds.add("O2 h1 "+BondType.OH90Bond);
+				int hCount=1;
 				for(int i=1;i<=cNumber-1;i++) {
-					if(i<=5)bonds.add("C"+i+" H "+BondType.CH120SingleBond);
+					if(i<=5)bonds.add("C"+i+" H"+(hCount++)+" "+BondType.CH120SingleBond);
 					else if(i!=6) {
-						for(int j=0;j<2;j++)bonds.add("C"+i+" H "+BondType.CHTeSingleBond);
+						for(int j=0;j<2;j++)bonds.add("C"+i+" H"+(hCount++)+" "+BondType.CHTeSingleBond);
 					}
 				}
 			}

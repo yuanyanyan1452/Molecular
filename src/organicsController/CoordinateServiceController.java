@@ -2,7 +2,7 @@ package organicsController;
 
 import java.util.regex.Pattern;
 
-import organicsBondService.HalohydrocarbonService;
+import organicsCoordinateService.HalohydrocarbonService;
 import organicsCoordinateService.CHOService;
 import organicsCoordinateService.HydrocarbonService;
 import organicsUtil.HaloType;
@@ -22,7 +22,7 @@ public class CoordinateServiceController {
 				moles.addAll(temp);
 			}
 		}else if(matchHalohydrocarbon(moleFormula)) {
-//			moles=HalohydrocarbonService.transformMoleFormula(moleFormula,haloType);
+			moles=HalohydrocarbonService.transformMoleFormula(moleFormula,haloType);
 		}else if(moleFormula.matches("[Cc]([1-9]{1}[0-9]{0,})?[Hh]([1-9]{1}[0-9]{0,})?[Oo]([1-9]{1}[0-9]{0,})?")) {
 			//醛
 			CHOService choService=new CHOService();

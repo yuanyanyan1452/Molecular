@@ -167,7 +167,7 @@ public class TestCoordinateTest extends Application {
         final PhongMaterial yellowMaterial = new PhongMaterial();
         greyMaterial.setDiffuseColor(Color.BLANCHEDALMOND);
         
-		LinkedList<Mole> moles=CoordinateSingleServiceController.serviceDispatcher("C4H8O2","按分子式");
+		LinkedList<Mole> moles=CoordinateSingleServiceController.serviceDispatcher("苯甲醚","按中文名");
 		
         Xform moleculeXform = new Xform();
         int sum=moles.size();

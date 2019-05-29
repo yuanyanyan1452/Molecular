@@ -33,7 +33,7 @@ public class GetFuncGroupStrFormula {
 		//羟基
 		if(funcGroup.equals(FuncGroupType.OH)) {
 			int sequenceO=1;
-			list.add("o"+(sequenceO)+" H "+BondType.OH90Bond);
+			list.add("O"+(sequenceO)+" h1 "+BondType.OH90Bond);
 		}
 		//醛基
 		if(funcGroup.equals(FuncGroupType.CHO)) {
