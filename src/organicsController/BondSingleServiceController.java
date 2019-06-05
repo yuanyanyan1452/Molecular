@@ -104,9 +104,56 @@ public class BondSingleServiceController {
 						break;
 				}
 			}else {
-				LifeBasicService lifeBasicService=new LifeBasicService();
-				bonds=lifeBasicService.transformMoleFormula(moleName);
-				if(!bonds.isEmpty()) return bonds;
+				if(MoleProperty.nameByLocalName.containsKey(moleName)) {
+					String temp=MoleProperty.nameByLocalName.get(moleName);
+					moleName=temp.split(" ")[0];
+					String type=temp.split(" ")[1];
+					switch(type) {
+						case "醛":
+							CHOService choService=new CHOService();
+							bonds=choService.transformMoleFormula(moleName);
+							if(!bonds.isEmpty()) return bonds;
+							break;
+						case "醚":
+							COCService cocService=new COCService();
+							bonds=cocService.transformMoleFormula(moleName);
+							if(!bonds.isEmpty()) return bonds;
+							break;
+						case "酸":
+							COOHService coohService=new COOHService();
+							bonds=coohService.transformMoleFormula(moleName);
+							if(!bonds.isEmpty()) return bonds;
+							break;
+						case "酯":
+							COOService cooService=new COOService();
+							bonds=cooService.transformMoleFormula(moleName);
+							if(!bonds.isEmpty()) return bonds;
+							break;
+						case "酮":
+							COService coService=new COService();
+							bonds=coService.transformMoleFormula(moleName);
+							if(!bonds.isEmpty()) return bonds;
+							break;
+						case "卤代烃":
+							bonds=HalohydrocarbonService.transformMoleFormula(moleName, haloType);
+							if(!bonds.isEmpty()) return bonds;
+							break;
+						case "烃":
+							HydrocarbonService hydrocarbonService=new HydrocarbonService();
+							bonds=hydrocarbonService.transformMoleFormula(moleName);
+							if(!bonds.isEmpty()) return bonds;
+							break;
+						case "醇":
+							OHService ohService=new OHService();
+							bonds=ohService.transformMoleFormula(moleName);
+							if(!bonds.isEmpty()) return bonds;
+							break;
+					}
+				}else {
+					LifeBasicService lifeBasicService=new LifeBasicService();
+					bonds=lifeBasicService.transformMoleFormula(moleName);
+					if(!bonds.isEmpty()) return bonds;
+				}
 			}
 		}
 		return bonds;
@@ -142,7 +189,8 @@ public class BondSingleServiceController {
 	//判断是否是中学化学常见有机物
 	public static boolean checkRange(String moleName) {
 		if(MoleProperty.nameByLocalName.containsKey(moleName))return true;
-		if(BondSingleServiceController.serviceDispatcher(moleName, "按分子式").isEmpty())return false;
+		if(BondSingleServiceController.serviceDispatcher(moleName, "按中文名").isEmpty()&&BondSingleServiceController.serviceDispatcher(moleName, "按分子式").isEmpty())
+			return false;
 		else return true;
 	}
 }

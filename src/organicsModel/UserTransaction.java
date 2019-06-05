@@ -44,10 +44,12 @@ public class UserTransaction {
 	//添加搜索记录(每次搜索的时候要调用）-搜索记录默认是最新的十条
 	public static boolean addSearchRecord(String moleName,String name) {
 		String searchRecord=DBUtil.searchField("select searchRecord from User where name='"+name+"';");
+		searchRecord=searchRecord==null? "":searchRecord;
 		String[] strs=searchRecord.split(",");
 		//如果记录少于十条，则可以直接添加新的记录；若已经十条了，则将第一个替换成新的记录
 		if(strs.length<10) {
-			String sql="update User set searchRecord=CONCAT(searchRecord,'"+moleName+",') where name='"+name+"';";
+			String sql="update User set searchRecord=CONCAT('"+searchRecord+"','"+moleName+",') where name='"+name+"';";
+			System.out.println(sql);
 			return DBUtil.updateField(sql);
 		}else{
 			LinkedList<String> temp=new LinkedList<String>();
@@ -63,5 +65,9 @@ public class UserTransaction {
 			String sql="update User set searchRecord='" +searchRecord+"' where name='"+name+"';";
 			return DBUtil.updateField(sql);
 		}
+	}
+	public static void main(String[] args) {
+		UserTransaction u=new UserTransaction();
+		u.addSearchRecord("CH4", "suwan2");
 	}
 }

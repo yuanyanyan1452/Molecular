@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import organicsUtil.Mole;
 public class BaseTest {
 		public static void main(String[] args) {
-			String[] input= {"甲烷"};
+			String[] input= {"葡萄糖"};
 			String inputType="按中文名";
 			MoleBLService ms=new MoleBLService();
 			for(String str:input) {

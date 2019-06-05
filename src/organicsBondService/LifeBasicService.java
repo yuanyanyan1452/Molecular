@@ -21,14 +21,15 @@ public class LifeBasicService implements TransformService {
 			//加上氢
 			for(int i=1;i<=6;i++) {
 				if(i==1) {
-					bonds.add("C"+i+" H "+BondType.CHTeSingleBond);
-					bonds.add("C"+i+" H "+BondType.CHTeSingleBond);
+					bonds.add("C"+i+" H2 "+BondType.CHTeSingleBond);
+					bonds.add("C"+i+" H3 "+BondType.CHTeSingleBond);
 				}else if(i==6) {
-					bonds.add("C"+i+" H "+BondType.CH120SingleBond);
-				}else bonds.add("C"+i+" H "+BondType.CHTeSingleBond);
+					bonds.add("C"+i+" H12 "+BondType.CH120SingleBond);
+				}else bonds.add("C"+i+" H"+(2*i)+" "+BondType.CHTeSingleBond);
 			}
 			for(int i=1;i<=5;i++) {
-				bonds.add("O"+i+" H "+BondType.OH90Bond);
+				if(i==1)bonds.add("O"+i+" H1 "+BondType.OH90Bond);
+				else bonds.add("O"+i+" H"+(2*i+1)+" "+BondType.OH90Bond);
 			}
 			break;
 		case "果糖":
